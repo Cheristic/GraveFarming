@@ -24,5 +24,4 @@ public class PlayerControls : MonoBehaviour
         Vector2 inputDir = input.Player.Move.ReadValue<Vector2>();
         rb.linearVelocity = inputDir * MoveSpeed;
     }
-
 }
