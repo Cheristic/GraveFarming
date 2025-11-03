@@ -1,7 +1,7 @@
 using UnityEngine;
 
-// Manages the level scene
-public class LevelManager : MonoBehaviour
+// Manages the farming scene
+public class FarmingSceneManager : MonoBehaviour
 {
     private void Awake()
     {
