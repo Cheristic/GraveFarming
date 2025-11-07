@@ -27,7 +27,11 @@ public class RoundManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             if (roundActive) EndActivePhase();
-            else BeginActivePhase();
+            else
+            {
+                timerText.text = string.Format("00:00");
+                BeginActivePhase();
+            }
         }
     }
 

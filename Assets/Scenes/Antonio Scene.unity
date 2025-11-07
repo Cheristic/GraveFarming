@@ -1033,8 +1033,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   timerText: {fileID: 1475922089}
-  activeTimeRemaining: 30
+  restTime: 30
   roundActive: 0
+  roundNum: 1
 --- !u!4 &1683927171
 Transform:
   m_ObjectHideFlags: 0
