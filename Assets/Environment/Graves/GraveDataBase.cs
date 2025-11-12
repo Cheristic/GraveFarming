@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System;
 
 public class GraveDatabase : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class GraveDatabase : MonoBehaviour
         SoulPieces,
         GravePieces
     }
+
+    [Serializable]
     public class GraveData
     {
         public GraveType type;
@@ -34,6 +38,4 @@ public class GraveDatabase : MonoBehaviour
             Instance = this;
         }
     }
-
-    
 }

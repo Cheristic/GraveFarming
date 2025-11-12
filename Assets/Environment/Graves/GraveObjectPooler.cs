@@ -11,22 +11,22 @@ public class GraveObjectPooler : MonoBehaviour
     {
         GravePools = new();
 
-        for (int i = 0; i < GraveDataBase.Instance.GraveList.Count; i++)
+        for (int i = 0; i < GraveDatabase.Instance.GraveList.Count; i++) // Currently, GraveList is empty, and thus this returns an error
         {
             List<GameObject> GravePool = new();
 
             for (int j = 0; j < PrespawnGraveAmount; j++)
             {
-                Grave grave = Instantiate(GraveDataBase.Instance.GraveList[i].gravePrefab).GetComponent<Grave>();
+                Grave grave = Instantiate(GraveDatabase.Instance.GraveList[i].gravePrefab).GetComponent<Grave>();
                 grave.gameObject.SetActive(false);
-                GravePool.Add(grave);
+                GravePool.Add(grave.gameObject); // Added .gameObject
             }
 
             GravePools.Add(GravePool);
         }
     }
 
-    public Grave GetGrave(GraveDataBase.GraveType type)
+    public Grave GetGrave(GraveDatabase.GraveType type)
     {
         List<GameObject> pool = GravePools[(int)type];
 
@@ -34,14 +34,13 @@ public class GraveObjectPooler : MonoBehaviour
         {
             if (!pool[i].gameObject.activeInHierarchy)
             {
-
-                return pool[i];
+                return pool[i].gameObject.GetComponent<Grave>();
             }
         }
 
-        Grave grave = Instantiate(GraveDataBase.Instance.GraveList[(int)type].gravePrefab).GetComponent<Grave>();
+        Grave grave = Instantiate(GraveDatabase.Instance.GraveList[(int)type].gravePrefab).GetComponent<Grave>();
         grave.gameObject.SetActive(false);
-        pool.Add(grave);
+        pool.Add(grave.gameObject);
         return grave;
     }
 }

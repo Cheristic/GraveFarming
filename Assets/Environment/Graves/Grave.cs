@@ -14,6 +14,7 @@ public class Grave : MonoBehaviour
     public void Break() 
     {
     //    Grid.Remove(GridIndex)
+    //  gameObject.SetActive(false);
     }
 }
 

@@ -228,3 +228,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3a54c597918cc49a6c8472006a0b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPlaceGraves
+  pooler: {fileID: 0}
