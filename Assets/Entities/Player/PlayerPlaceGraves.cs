@@ -12,12 +12,16 @@ public class PlayerPlaceGraves : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.Keypad0))
         {
-            Grave grave = pooler.GetGrave(0);
-            Grave newGrave = Instantiate(grave);
-            newGrave.transform.position = this.transform.position;
-            newGrave.Spawn();
+            Grave grave = pooler.GetGrave(GraveDatabase.GraveType.Shooter);
+            grave.transform.position = gameObject.transform.position;
+            grave.Spawn();
+        } else if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            Grave grave = pooler.GetGrave(GraveDatabase.GraveType.Blocker);
+            grave.transform.position = gameObject.transform.position;
+            grave.Spawn();
         }
     }
 }
