@@ -4,7 +4,7 @@ public class PlayerControls : MonoBehaviour
 {
     [SerializeField] float MoveSpeed;
 
-    PlayerInput input;
+    internal PlayerInput input;
     Rigidbody2D rb;
 
     public void Init()

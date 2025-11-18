@@ -7,7 +7,7 @@ public class GraveObjectPooler : MonoBehaviour
     List<List<GameObject>> GravePools;
     [SerializeField] int PrespawnGraveAmount;
 
-    private void OnEnable()
+    private void Start()
     {
         GravePools = new();
 

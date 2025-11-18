@@ -103,7 +103,6 @@ GameObject:
   - component: {fileID: 6670930470796002252}
   - component: {fileID: 3721251210563088906}
   - component: {fileID: 1820093259766299928}
-  - component: {fileID: 6794872184783031455}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -216,16 +215,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &6794872184783031455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8220346961420746679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca3a54c597918cc49a6c8472006a0b3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerPlaceGraves
-  pooler: {fileID: 0}

@@ -39,4 +39,6 @@ public class GraveDatabase : MonoBehaviour
             Instance = this;
         }
     }
+
+    public GraveData GetGraveData(GraveType type) => GraveList[(int)type];
 }

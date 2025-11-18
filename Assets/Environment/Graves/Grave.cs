@@ -4,11 +4,12 @@ using System.Collections.Generic;
 
 public class Grave : MonoBehaviour
 {
-    public int GridIndex;
+    public Vector2Int GridSpot;
 
-    public void Spawn() 
+    public void Spawn(Vector2 location) 
     {
         gameObject.SetActive(true);
+        transform.position = location;
     }
 
     public void Break() 
