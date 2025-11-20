@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 627361549241571379}
   - component: {fileID: 6670930470796002252}
   - component: {fileID: 3721251210563088906}
-  - component: {fileID: 1820093259766299928}
+  - component: {fileID: 2313830370825230599}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -140,10 +140,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
   playerResources:
   - type: 0
-    cost: 10
+    cost: 100
   - type: 1
-    cost: 10
+    cost: 100
   controls: {fileID: 6670930470796002252}
+  _collider: {fileID: 2313830370825230599}
 --- !u!114 &6670930470796002252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,8 +185,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1820093259766299928
-CircleCollider2D:
+--- !u!61 &2313830370825230599
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -219,4 +220,14 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.7, y: 0.7}
+  m_EdgeRadius: 0

@@ -127,6 +127,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectGrave"",
+                    ""type"": ""Button"",
+                    ""id"": ""c3e45389-1ad5-4474-9b38-279d9ff78d68"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -369,6 +378,61 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PlaceGrave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0f990c2b-bde6-4f6c-b027-e9ef763176a1"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale"",
+                    ""groups"": """",
+                    ""action"": ""SelectGrave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6898b860-0cd7-4024-b2f8-2b9313724607"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=2)"",
+                    ""groups"": """",
+                    ""action"": ""SelectGrave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f873d93e-31f7-4ddc-bed3-f0af102adb1d"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=3)"",
+                    ""groups"": """",
+                    ""action"": ""SelectGrave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0bcd8bca-24de-4ce2-8207-da4e6f92b8ca"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=4)"",
+                    ""groups"": """",
+                    ""action"": ""SelectGrave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d467bba-6208-42b6-a967-3ee674d164f3"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=5)"",
+                    ""groups"": """",
+                    ""action"": ""SelectGrave"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -960,6 +1024,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_PlaceGrave = m_Player.FindAction("PlaceGrave", throwIfNotFound: true);
+        m_Player_SelectGrave = m_Player.FindAction("SelectGrave", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1057,6 +1122,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_PlaceGrave;
+    private readonly InputAction m_Player_SelectGrave;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1084,6 +1150,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/PlaceGrave".
         /// </summary>
         public InputAction @PlaceGrave => m_Wrapper.m_Player_PlaceGrave;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/SelectGrave".
+        /// </summary>
+        public InputAction @SelectGrave => m_Wrapper.m_Player_SelectGrave;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1122,6 +1192,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @PlaceGrave.started += instance.OnPlaceGrave;
             @PlaceGrave.performed += instance.OnPlaceGrave;
             @PlaceGrave.canceled += instance.OnPlaceGrave;
+            @SelectGrave.started += instance.OnSelectGrave;
+            @SelectGrave.performed += instance.OnSelectGrave;
+            @SelectGrave.canceled += instance.OnSelectGrave;
         }
 
         /// <summary>
@@ -1145,6 +1218,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @PlaceGrave.started -= instance.OnPlaceGrave;
             @PlaceGrave.performed -= instance.OnPlaceGrave;
             @PlaceGrave.canceled -= instance.OnPlaceGrave;
+            @SelectGrave.started -= instance.OnSelectGrave;
+            @SelectGrave.performed -= instance.OnSelectGrave;
+            @SelectGrave.canceled -= instance.OnSelectGrave;
         }
 
         /// <summary>
@@ -1473,6 +1549,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPlaceGrave(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SelectGrave" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelectGrave(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

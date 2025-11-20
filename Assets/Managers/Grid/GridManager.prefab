@@ -132,7 +132,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1346340809271695985, guid: fc2e83618c785824f8f16f11bd8d6856, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5058824}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -187,4 +187,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPlaceGraves
   pooler: {fileID: 0}
-  GravePreviewLocation: {fileID: 774850545629847525}
+  GravePreviewLocation: {fileID: 0}
+  ValidPlaceColor: {r: 1, g: 1, b: 1, a: 0.7882353}
+  InvalidPlaceColor: {r: 0.8867924, g: 0.2694337, b: 0.14222129, a: 0.44313726}

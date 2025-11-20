@@ -48,6 +48,7 @@ public class GraveDatabase : MonoBehaviour
     }
 
     public GraveData GetGraveData(GraveType type) => GraveList[(int)type];
+    public GraveData GetGraveData(int index) => GraveList[index];
 
     public static int CompareResourceRequirements(ResourceRequirements req1, ResourceRequirements req2)
     {

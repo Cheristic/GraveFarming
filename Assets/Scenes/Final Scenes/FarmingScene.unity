@@ -704,14 +704,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 709111466}
     m_Modifications:
-    - target: {fileID: 627361549241571379, guid: 2995792bb57668f4bbbcd6b673df73dc, type: 3}
-      propertyPath: playerResources.Array.data[0].cost
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 627361549241571379, guid: 2995792bb57668f4bbbcd6b673df73dc, type: 3}
-      propertyPath: playerResources.Array.data[1].cost
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 7515146580885724116, guid: 2995792bb57668f4bbbcd6b673df73dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.8

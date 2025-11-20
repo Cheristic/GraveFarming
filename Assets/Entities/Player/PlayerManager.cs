@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
 
     public static PlayerManager Instance { get; private set; }
     [SerializeField] PlayerControls controls;
+    public BoxCollider2D _collider;
     public PlayerInput Input => controls.input;
     private void Awake()
     {
