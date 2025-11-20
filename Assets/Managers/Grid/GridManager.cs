@@ -5,7 +5,7 @@ public class GridManager : MonoBehaviour
 {
     public static GridManager Instance { get; private set; }
     [SerializeField] Vector2Int GridDimensions;
-    [SerializeField] float WorldtoGridRatio;
+    [SerializeField] public float WorldtoGridRatio;
 
     int[,] Grid;
 
@@ -36,8 +36,4 @@ public class GridManager : MonoBehaviour
         if (gridPos.x >= GridDimensions.x || gridPos.x < 0 || gridPos.y >= GridDimensions.y || gridPos.y < 0) return true;
         return Grid[gridPos.x, gridPos.y] == 1;
     }
-
-
-
-
 }

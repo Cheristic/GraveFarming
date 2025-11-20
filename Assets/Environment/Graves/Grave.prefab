@@ -151,8 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d6f648f05de3a42ae94f384ccb4492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grave
-  pooler: {fileID: 0}
-  GridSpot: {x: 0, y: 0}
+  breakScript: {fileID: 0}
 --- !u!114 &-8161004661684962703
 MonoBehaviour:
   m_ObjectHideFlags: 0
