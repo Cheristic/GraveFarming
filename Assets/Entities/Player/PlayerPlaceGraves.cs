@@ -54,7 +54,9 @@ public class PlayerPlaceGraves : MonoBehaviour
 
     bool HasEnoughResources()
     {
-        return (PlayerManager.Instance.playerResources[soulIndex].cost >= LastSelectedType.resourceRequirements[soulIndex].cost) && (PlayerManager.Instance.playerResources[graveIndex].cost >= LastSelectedType.resourceRequirements[graveIndex].cost);
+        bool hasEnoughSoul = PlayerManager.Instance.playerResources[soulIndex].cost >= LastSelectedType.resourceRequirements[soulIndex].cost;
+        bool hasEnoughGrave = PlayerManager.Instance.playerResources[graveIndex].cost >= LastSelectedType.resourceRequirements[graveIndex].cost;
+        return hasEnoughSoul && hasEnoughGrave;
     }
 
     void ChargePlayer()

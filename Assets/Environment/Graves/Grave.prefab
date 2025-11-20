@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7701275922117136128}
   - component: {fileID: 7764368375855020640}
   - component: {fileID: 6080435306487080475}
+  - component: {fileID: -8161004661684962703}
   m_Layer: 6
   m_Name: Grave
   m_TagString: Untagged
@@ -150,4 +151,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d6f648f05de3a42ae94f384ccb4492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grave
-  GridIndex: 0
+  pooler: {fileID: 0}
+  GridSpot: {x: 0, y: 0}
+--- !u!114 &-8161004661684962703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4955887990762712436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86ca5a517d4d24d80dfad3a3c49701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreakGrave
