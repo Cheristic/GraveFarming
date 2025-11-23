@@ -11,7 +11,7 @@ public class GraveObjectPooler : MonoBehaviour
     {
         GravePools = new();
 
-        for (int i = 0; i < GraveDatabase.Instance.GraveList.Count; i++) // Currently, GraveList is empty, and thus this returns an error
+        for (int i = 0; i < GraveDatabase.Instance.GraveList.Count; i++)
         {
             List<GameObject> GravePool = new();
 
@@ -19,7 +19,7 @@ public class GraveObjectPooler : MonoBehaviour
             {
                 Grave grave = Instantiate(GraveDatabase.Instance.GraveList[i].gravePrefab).GetComponent<Grave>();
                 grave.gameObject.SetActive(false);
-                GravePool.Add(grave.gameObject); // Added .gameObject
+                GravePool.Add(grave.gameObject);
             }
 
             GravePools.Add(GravePool);
@@ -42,5 +42,22 @@ public class GraveObjectPooler : MonoBehaviour
         grave.gameObject.SetActive(false);
         pool.Add(grave.gameObject);
         return grave;
+    }
+    
+    public (Grave, bool) GraveAt(Vector2 pos)
+    {
+        for (int i = 0; i <  GravePools.Count; i++)
+        {
+            List<GameObject> pool = GravePools[i];
+            for (int j = 0; j < pool.Count; j++)
+            {
+                if (new Vector2(pool[j].transform.position.x, pool[j].transform.position.y) == pos)
+                {
+                    return (pool[j].GetComponent<Grave>(), true);
+                }
+            }
+        }
+        
+        return (null,  false);
     }
 }

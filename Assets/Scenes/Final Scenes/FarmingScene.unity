@@ -631,6 +631,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 232483746080600235, guid: dc0157ddfbbb2f34483e0517aa1ccbf7, type: 3}
+      propertyPath: gravePooler
+      value: 
+      objectReference: {fileID: 1076446824}
+    - target: {fileID: 232483746080600235, guid: dc0157ddfbbb2f34483e0517aa1ccbf7, type: 3}
+      propertyPath: piecePooler
+      value: 
+      objectReference: {fileID: 2063864643}
     - target: {fileID: 774850545629847525, guid: dc0157ddfbbb2f34483e0517aa1ccbf7, type: 3}
       propertyPath: m_Color.a
       value: 0.5058824
@@ -651,6 +659,10 @@ PrefabInstance:
       propertyPath: pooler
       value: 
       objectReference: {fileID: 1076446824}
+    - target: {fileID: 7048021239207332021, guid: dc0157ddfbbb2f34483e0517aa1ccbf7, type: 3}
+      propertyPath: GravePreviewLocation
+      value: 
+      objectReference: {fileID: 772891820}
     - target: {fileID: 8593331906299505136, guid: dc0157ddfbbb2f34483e0517aa1ccbf7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -696,6 +708,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc0157ddfbbb2f34483e0517aa1ccbf7, type: 3}
+--- !u!212 &772891820 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 774850545629847525, guid: dc0157ddfbbb2f34483e0517aa1ccbf7, type: 3}
+  m_PrefabInstance: {fileID: 742579016}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &775482018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1130,6 +1147,52 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &2063864642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2063864644}
+  - component: {fileID: 2063864643}
+  m_Layer: 0
+  m_Name: GravePiecePooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2063864643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063864642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d48c10bb6c25bae42a9548734b124b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GravePiecePooler
+  PrespawnGravePieceAmount: 4
+  piecePrefab: {fileID: 4061568259649892808, guid: 228685f8e3d3569489b2e7d0cbc0acff, type: 3}
+--- !u!4 &2063864644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063864642}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.46939, y: 4.67244, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2069887390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,3 +1285,4 @@ SceneRoots:
   - {fileID: 1076446825}
   - {fileID: 1760026699}
   - {fileID: 742579016}
+  - {fileID: 2063864644}

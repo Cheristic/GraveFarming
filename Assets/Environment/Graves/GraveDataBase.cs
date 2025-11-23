@@ -52,8 +52,8 @@ public class GraveDatabase : MonoBehaviour
 
     public static int CompareResourceRequirements(ResourceRequirements req1, ResourceRequirements req2)
     {
-        if ((int)req1.type <= (int)req2.type) return -1;
-        else if ((int)req1.type >= (int)req2.type) return 1;
+        if ((int)req1.type < (int)req2.type) return -1;
+        else if ((int)req1.type > (int)req2.type) return 1;
 
         return 0;
     }
