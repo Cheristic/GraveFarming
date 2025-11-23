@@ -95,7 +95,7 @@ public class PlayerPlaceGraves : MonoBehaviour
 
     void ChargePlayer()
     {
-        PlayerManager.Instance.playerResources[soulIndex].cost -= LastSelectedType.resourceRequirements[soulIndex].cost;
-        PlayerManager.Instance.playerResources[graveIndex].cost -= LastSelectedType.resourceRequirements[graveIndex].cost;
+        PlayerManager.Instance.ModifyResource(GraveDatabase.Resources.SoulPieces, -LastSelectedType.resourceRequirements[soulIndex].cost);
+        PlayerManager.Instance.ModifyResource(GraveDatabase.Resources.GravePieces, -LastSelectedType.resourceRequirements[graveIndex].cost);
     }
 }

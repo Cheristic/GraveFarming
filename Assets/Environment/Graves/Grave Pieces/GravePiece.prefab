@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3825936616212378276}
   - component: {fileID: 8236629711589022008}
   - component: {fileID: 951430804213175597}
+  - component: {fileID: 1326099320871714007}
   m_Layer: 0
   m_Name: GravePiece
   m_TagString: Untagged
@@ -103,3 +104,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d01cd8f696ed745834da80549c87ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GravePiece
+--- !u!70 &1326099320871714007
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4061568259649892808}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 5.32, y: 4.5}
+  m_Direction: 0

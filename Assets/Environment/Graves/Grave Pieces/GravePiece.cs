@@ -13,4 +13,10 @@ public class GravePiece : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        gameObject.SetActive(false);
+        PlayerManager.Instance.ModifyResource(GraveDatabase.Resources.GravePieces, 1);
+    }
 }
