@@ -9,7 +9,8 @@ public class Grave : MonoBehaviour
     [SerializeField] float initialHealth;
     float health;
 
-    public void Spawn(Vector2 location) 
+    public virtual void Init() { }
+    public virtual void Spawn(Vector2 location) 
     {
         gameObject.SetActive(true);
         transform.position = location;

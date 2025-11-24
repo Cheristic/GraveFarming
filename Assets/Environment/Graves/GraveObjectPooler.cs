@@ -19,6 +19,7 @@ public class GraveObjectPooler : MonoBehaviour
             {
                 Grave grave = Instantiate(GraveDatabase.Instance.GraveList[i].gravePrefab, this.transform).GetComponent<Grave>();
                 grave.gameObject.SetActive(false);
+                grave.Init();
                 GravePool.Add(grave.gameObject);
             }
 
@@ -40,6 +41,7 @@ public class GraveObjectPooler : MonoBehaviour
 
         Grave grave = Instantiate(GraveDatabase.Instance.GraveList[(int)type].gravePrefab, this.transform).GetComponent<Grave>();
         grave.gameObject.SetActive(false);
+        grave.Init();
         pool.Add(grave.gameObject);
         return grave;
     }
