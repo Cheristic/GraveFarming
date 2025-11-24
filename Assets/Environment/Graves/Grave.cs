@@ -6,11 +6,14 @@ public class Grave : MonoBehaviour
 {
     //public Vector2Int GridSpot;
     [SerializeField] BreakGrave breakScript;
+    [SerializeField] float initialHealth;
+    float health;
 
     public void Spawn(Vector2 location) 
     {
         gameObject.SetActive(true);
         transform.position = location;
+        health = initialHealth;
     }
 
     public void Break(Vector2Int gridIndex) 

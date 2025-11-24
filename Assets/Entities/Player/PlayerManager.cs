@@ -21,14 +21,6 @@ public class PlayerManager : MonoBehaviour
         controls.Init();
     }
 
-    public static int CompareResourceRequirements(GraveDatabase.ResourceRequirements req1, GraveDatabase.ResourceRequirements req2)
-    {
-        if ((int)req1.type < (int)req2.type) return -1;
-        else if ((int)req1.type > (int)req2.type) return 1;
-
-        return 0;
-    }
-
     private void Start()
     {
         Array.Sort(playerResources, GraveDatabase.CompareResourceRequirements);
@@ -37,7 +29,7 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-    public void ModifyResource(GraveDatabase.Resources type, int amount)
+    public void ModifyResource(PickUp.Type type, int amount)
     {
         playerResources[(int)type].cost += amount;
         switch ((int)type)

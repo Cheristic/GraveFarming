@@ -17,7 +17,7 @@ public class GraveObjectPooler : MonoBehaviour
 
             for (int j = 0; j < PrespawnGraveAmount; j++)
             {
-                Grave grave = Instantiate(GraveDatabase.Instance.GraveList[i].gravePrefab).GetComponent<Grave>();
+                Grave grave = Instantiate(GraveDatabase.Instance.GraveList[i].gravePrefab, this.transform).GetComponent<Grave>();
                 grave.gameObject.SetActive(false);
                 GravePool.Add(grave.gameObject);
             }
@@ -38,7 +38,7 @@ public class GraveObjectPooler : MonoBehaviour
             }
         }
 
-        Grave grave = Instantiate(GraveDatabase.Instance.GraveList[(int)type].gravePrefab).GetComponent<Grave>();
+        Grave grave = Instantiate(GraveDatabase.Instance.GraveList[(int)type].gravePrefab, this.transform).GetComponent<Grave>();
         grave.gameObject.SetActive(false);
         pool.Add(grave.gameObject);
         return grave;

@@ -1,7 +1,16 @@
+using System;
 using UnityEngine;
 
-public class GravePiece : MonoBehaviour
+public class PickUp : MonoBehaviour
 {
+    public enum Type
+    {
+        SoulPiece,
+        GravePiece
+    }
+
+    [SerializeField] Type type;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Spawn()
     {
@@ -17,6 +26,7 @@ public class GravePiece : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         gameObject.SetActive(false);
-        PlayerManager.Instance.ModifyResource(GraveDatabase.Resources.GravePieces, 1);
+        PlayerManager.Instance.ModifyResource(this.type, 1);
     }
+
 }

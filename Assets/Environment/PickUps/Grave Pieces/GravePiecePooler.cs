@@ -12,7 +12,7 @@ public class GravePiecePooler : MonoBehaviour
 
         for (int i = 0; i < PrespawnGravePieceAmount; i++)
         {
-            GravePiece piece = Instantiate(piecePrefab).GetComponent<GravePiece>();
+            GravePiece piece = Instantiate(piecePrefab, this.transform).GetComponent<GravePiece>();
             piece.gameObject.SetActive(false);
             GravePiecePool.Add(piece.gameObject);
         }
@@ -28,7 +28,7 @@ public class GravePiecePooler : MonoBehaviour
             }
         }
 
-        GravePiece piece = Instantiate(piecePrefab).GetComponent<GravePiece>();
+        GravePiece piece = Instantiate(piecePrefab, this.transform).GetComponent<GravePiece>();
         piece.gameObject.SetActive(false);
         GravePiecePool.Add(piece.gameObject);
         return piece;
