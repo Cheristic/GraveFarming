@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8713514790936778390}
   - component: {fileID: 8887617688523470377}
   m_Layer: 8
-  m_Name: TEMP ENEMY
+  m_Name: ENEMY1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,6 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e695e421c8e53bc49bc8101f0fd262b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TempEnemy
+  maxHealth: 30
+  moveSpeed: 3
+  contactDamage: 10
+  attackCooldown: 2.25
 --- !u!50 &8887617688523470377
 Rigidbody2D:
   serializedVersion: 5
@@ -149,7 +153,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6089361557943963866}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
