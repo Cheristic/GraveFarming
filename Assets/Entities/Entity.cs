@@ -24,4 +24,6 @@ public class Entity : MonoBehaviour, IHittable
         Debug.Log($"{name} died.");
         Destroy(gameObject);
     }
+
+    public void Init() { }
 }
