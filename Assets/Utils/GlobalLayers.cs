@@ -17,7 +17,9 @@ public class GlobalLayers : MonoBehaviour
     public enum Layers
     {
         Enemies,
-        Hittable
+        Hittable,
+        Player,
+        Grave
     }
     [Serializable]
     public struct LayerData

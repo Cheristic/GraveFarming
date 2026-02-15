@@ -66,3 +66,11 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 256
     layerName: 1
+  - mask:
+      serializedVersion: 2
+      m_Bits: 128
+    layerName: 2
+  - mask:
+      serializedVersion: 2
+      m_Bits: 64
+    layerName: 3

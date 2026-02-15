@@ -45,21 +45,4 @@ public class GraveObjectPooler : MonoBehaviour
         pool.Add(grave.gameObject);
         return grave;
     }
-    
-    public (Grave, bool) GraveAt(Vector2 pos)
-    {
-        for (int i = 0; i <  GravePools.Count; i++)
-        {
-            List<GameObject> pool = GravePools[i];
-            for (int j = 0; j < pool.Count; j++)
-            {
-                if (new Vector2(pool[j].transform.position.x, pool[j].transform.position.y) == pos)
-                {
-                    return (pool[j].GetComponent<Grave>(), true);
-                }
-            }
-        }
-        
-        return (null,  false);
-    }
 }

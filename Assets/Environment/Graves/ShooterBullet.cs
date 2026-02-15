@@ -32,10 +32,7 @@ public class ShooterBullet : MonoBehaviour
 
         if (GlobalLayers.IsOnLayer(collision.gameObject, GlobalLayers.Layers.Hittable))
         {
-            if (GlobalLayers.IsOnLayer(collision.gameObject, GlobalLayers.Layers.Enemies))
-            {
-                if (collision.gameObject.TryGetComponent<IHittable>(out var hit)) hit.Hit(DAMAGE);
-            }
+            if (collision.gameObject.TryGetComponent<IHittable>(out var hit)) hit.Hit(DAMAGE);
             gameObject.SetActive(false);
         }
     }

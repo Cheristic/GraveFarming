@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerPlaceGraves : MonoBehaviour
 {
-    [SerializeField] GraveObjectPooler pooler;
     [SerializeField] SpriteRenderer GravePreviewLocation;
     int soulIndex = (int)GraveDatabase.Resources.SoulPieces;
     int graveIndex = (int)GraveDatabase.Resources.GravePieces;
@@ -78,7 +77,7 @@ public class PlayerPlaceGraves : MonoBehaviour
         if (isValidPosition(mousePos) && HasEnoughResources())
         {
             Vector2 graveLocation = GridManager.Instance.PlaceGrave(mousePos);
-            Grave grave = pooler.GetGrave(LastSelectedType.type);
+            Grave grave = PoolManager.Instance.gravePooler.GetGrave(LastSelectedType.type);
             grave.Spawn(graveLocation);
             ChargePlayer();
 

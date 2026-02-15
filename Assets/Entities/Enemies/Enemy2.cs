@@ -1,21 +1,18 @@
 using UnityEngine;
+using Layers = GlobalLayers.Layers;
 
-public class Enemy2 : MonoBehaviour, IHittable
+public class Enemy2 : Entity
 {
-    [SerializeField] private float maxHealth = 30f;
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float contactDamage = 10f;
     [SerializeField] private float attackCooldown = 2.25f;
 
-    private float _currentHealth;
     private float _lastAttackTime = float.MinValue;
     private Transform _target;
-    private Rigidbody2D _rb;
 
-    private void Awake()
+    private new void Awake()
     {
-        _currentHealth = maxHealth;
-        _rb = GetComponent<Rigidbody2D>();
+        base.Awake();
         if (_rb != null) _rb.bodyType = RigidbodyType2D.Dynamic;
         AcquireTarget();
     }
@@ -36,31 +33,18 @@ public class Enemy2 : MonoBehaviour, IHittable
         _rb.MovePosition(_rb.position + direction * moveSpeed * Time.fixedDeltaTime);
     }
 
-    public void Hit(float dmg)
-    {
-        _currentHealth -= dmg;
-        if (_currentHealth <= 0f) Die();
-        else Debug.Log($"{name} got hit! HP: {_currentHealth}/{maxHealth}");
-    }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (!collision.collider.CompareTag("Player")) return;
-        TryAttack(collision.collider.gameObject);
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (!other.CompareTag("Player")) return;
-        TryAttack(other.gameObject);
-    }
-
-    private void TryAttack(GameObject player)
-    {
         if (!CanAttack()) return;
 
-        _lastAttackTime = Time.time;
-        player.SendMessage("TakeDamage", contactDamage, SendMessageOptions.DontRequireReceiver);
+        if (GlobalLayers.IsOnLayer(collision.gameObject, Layers.Player) ||
+            GlobalLayers.IsOnLayer(collision.gameObject, Layers.Grave))
+            if (collision.gameObject.TryGetComponent<IHittable>(out var hit))
+            {
+                hit.Hit(contactDamage);
+                _lastAttackTime = Time.time;
+            }
     }
 
     private bool CanAttack()
@@ -71,11 +55,5 @@ public class Enemy2 : MonoBehaviour, IHittable
     private void AcquireTarget()
     {
         _target = PlayerManager.Instance != null ? PlayerManager.Instance.transform : null;
-    }
-
-    private void Die()
-    {
-        Debug.Log($"{name} died.");
-        Destroy(gameObject);
     }
 }

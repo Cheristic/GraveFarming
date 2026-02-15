@@ -176,52 +176,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caceec6bc5792414796c02ce3c24354e, type: 3}
---- !u!1 &214366890
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 214366891}
-  - component: {fileID: 214366892}
-  m_Layer: 0
-  m_Name: SoulPieces
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &214366891
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214366890}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.567, y: 8.20386, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 709111466}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &214366892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214366890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d22694cc4cbd154e9ee6a7b1e61afc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PickUpPooler
-  PrespawnSoulPieceAmount: 5
-  soulPiecePrefab: {fileID: 4532704243253212157, guid: 058a69e151736c245aa9d245e969a9e4, type: 3}
 --- !u!1 &264980332
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,10 +883,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1715559076}
   - {fileID: 2004006191}
-  - {fileID: 1076446825}
-  - {fileID: 2063864644}
-  - {fileID: 214366891}
   - {fileID: 775482019}
   - {fileID: 511062457}
   - {fileID: 381491234}
@@ -950,11 +902,11 @@ PrefabInstance:
     - target: {fileID: 232483746080600235, guid: dc0157ddfbbb2f34483e0517aa1ccbf7, type: 3}
       propertyPath: gravePooler
       value: 
-      objectReference: {fileID: 1076446824}
+      objectReference: {fileID: 0}
     - target: {fileID: 232483746080600235, guid: dc0157ddfbbb2f34483e0517aa1ccbf7, type: 3}
       propertyPath: piecePooler
       value: 
-      objectReference: {fileID: 2063864643}
+      objectReference: {fileID: 0}
     - target: {fileID: 774850545629847525, guid: dc0157ddfbbb2f34483e0517aa1ccbf7, type: 3}
       propertyPath: m_Color.a
       value: 0.5058824
@@ -974,7 +926,7 @@ PrefabInstance:
     - target: {fileID: 7048021239207332021, guid: dc0157ddfbbb2f34483e0517aa1ccbf7, type: 3}
       propertyPath: pooler
       value: 
-      objectReference: {fileID: 1076446824}
+      objectReference: {fileID: 0}
     - target: {fileID: 7048021239207332021, guid: dc0157ddfbbb2f34483e0517aa1ccbf7, type: 3}
       propertyPath: GravePreviewLocation
       value: 
@@ -1099,51 +1051,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7515146580885724116, guid: 2995792bb57668f4bbbcd6b673df73dc, type: 3}
   m_PrefabInstance: {fileID: 775482018}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1076446823
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1076446825}
-  - component: {fileID: 1076446824}
-  m_Layer: 0
-  m_Name: GraveObjects
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1076446824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1076446823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fe9a45752e27d0439a0e94c3cba88a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GraveObjectPooler
-  PrespawnGraveAmount: 10
---- !u!4 &1076446825
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1076446823}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.65876, y: 0.03861001, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 709111466}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1347656735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,6 +1780,96 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695243532}
   m_CullTransparentMesh: 1
+--- !u!1 &1715559075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1715559076}
+  - component: {fileID: 1715559080}
+  - component: {fileID: 1715559079}
+  - component: {fileID: 1715559078}
+  - component: {fileID: 1715559077}
+  m_Layer: 0
+  m_Name: Poolers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1715559076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715559075}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.03852, y: -0.29345, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 709111466}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1715559077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715559075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d22694cc4cbd154e9ee6a7b1e61afc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickUpPooler
+  PrespawnSoulPieceAmount: 5
+  soulPiecePrefab: {fileID: 4532704243253212157, guid: 058a69e151736c245aa9d245e969a9e4, type: 3}
+--- !u!114 &1715559078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715559075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d48c10bb6c25bae42a9548734b124b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GravePiecePooler
+  PrespawnGravePieceAmount: 4
+  piecePrefab: {fileID: 4061568259649892808, guid: 228685f8e3d3569489b2e7d0cbc0acff, type: 3}
+--- !u!114 &1715559079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715559075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe9a45752e27d0439a0e94c3cba88a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GraveObjectPooler
+  PrespawnGraveAmount: 10
+--- !u!114 &1715559080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715559075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e45bc262a530349ad988dc850d8976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PoolManager
+  gravePooler: {fileID: 1715559079}
+  piecePooler: {fileID: 1715559078}
 --- !u!1 &1760026697
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,52 +2015,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!1 &2063864642
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2063864644}
-  - component: {fileID: 2063864643}
-  m_Layer: 0
-  m_Name: GravePieces
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2063864643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063864642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d48c10bb6c25bae42a9548734b124b34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GravePiecePooler
-  PrespawnGravePieceAmount: 4
-  piecePrefab: {fileID: 4061568259649892808, guid: 228685f8e3d3569489b2e7d0cbc0acff, type: 3}
---- !u!4 &2063864644
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063864642}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.46939, y: 4.67244, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 709111466}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2069887390
 GameObject:
   m_ObjectHideFlags: 0

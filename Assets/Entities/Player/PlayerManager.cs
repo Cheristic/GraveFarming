@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
 
     public static PlayerManager Instance { get; private set; }
     [SerializeField] PlayerControls controls;
+    [SerializeField] PlayerHealth health;
     public BoxCollider2D _collider;
     public PlayerInput Input => controls.input;
     private void Awake()
@@ -26,7 +27,6 @@ public class PlayerManager : MonoBehaviour
         Array.Sort(playerResources, GraveDatabase.CompareResourceRequirements);
         soulValue.text = playerResources[0].cost.ToString();
         graveValue.text = playerResources[1].cost.ToString();
-
     }
 
     public void ModifyResource(PickUp.Type type, int amount)

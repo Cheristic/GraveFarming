@@ -150,5 +150,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d6f648f05de3a42ae94f384ccb4492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grave
-  breakScript: {fileID: 0}
+  numGravePieces: 2
   initialHealth: 100

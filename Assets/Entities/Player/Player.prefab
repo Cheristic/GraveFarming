@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 6670930470796002252}
   - component: {fileID: 3721251210563088906}
   - component: {fileID: 2313830370825230599}
+  - component: {fileID: 8394783043594482335}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -146,6 +147,7 @@ MonoBehaviour:
   graveValue: {fileID: 0}
   soulValue: {fileID: 0}
   controls: {fileID: 6670930470796002252}
+  health: {fileID: 8394783043594482335}
   _collider: {fileID: 2313830370825230599}
 --- !u!114 &6670930470796002252
 MonoBehaviour:
@@ -233,3 +235,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.7, y: 0.7}
   m_EdgeRadius: 0
+--- !u!114 &8394783043594482335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220346961420746679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eca643cce61cc441934ee0ba28fca99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  MAX_HEALTH: 10

@@ -25,9 +25,10 @@ public class GridManager : MonoBehaviour
         return ToWorldSpace(gridPos);
     }
 
-    public void RemoveGrave(int x, int y)
+    public void RemoveGrave(Vector2 graveWorldPos)
     {
-        Grid[x, y] = 0;
+        Vector2Int gridPos = ToGridSpace(graveWorldPos);
+        Grid[gridPos.x, gridPos.y] = 0;
     }
 
     public bool HasGraveAt(Vector2 pos)
@@ -36,4 +37,5 @@ public class GridManager : MonoBehaviour
         if (gridPos.x >= GridDimensions.x || gridPos.x < 0 || gridPos.y >= GridDimensions.y || gridPos.y < 0) return true;
         return Grid[gridPos.x, gridPos.y] == 1;
     }
+
 }

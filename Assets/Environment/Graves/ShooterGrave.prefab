@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb2bebe8d5c670e43b22dd0f589ad582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShooterGrave
+  numGravePieces: 2
+  initialHealth: 10
   BULLETS_TO_POOL: 3
   _SHOOTER_BULLET: {fileID: 9043203428285898434, guid: 1d5c60b6166193e4ea503a46b22f3bea, type: 3}
   PLAYER_CHECK_FOR_ENEMY_RADIUS: 6
@@ -54,9 +56,6 @@ MonoBehaviour:
   CHECK_FOR_ENEMY_INTERVAL: 0.5
   TIME_BETWEEN_BULLETS: 0.56
   REST_TIME_AFTER_BULLETS: 1
-  ENEMIES_LAYER:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!212 &7701275922117136128
 SpriteRenderer:
   m_ObjectHideFlags: 0
