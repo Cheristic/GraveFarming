@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy1 : MonoBehaviour
+public class Enemy1 : MonoBehaviour, IHittable
 {
     [SerializeField] private float maxHealth = 30f;
     [SerializeField] private float moveSpeed = 3f;
@@ -35,9 +35,9 @@ public class Enemy1 : MonoBehaviour
         _rb.MovePosition(_rb.position + direction * moveSpeed * Time.fixedDeltaTime);
     }
 
-    public void Hit()
+    public void Hit(float dmg)
     {
-        _currentHealth -= 1f;
+        _currentHealth -= dmg;
         if (_currentHealth <= 0f) Die();
         else Debug.Log($"{name} got hit! HP: {_currentHealth}/{maxHealth}");
     }
@@ -69,7 +69,7 @@ public class Enemy1 : MonoBehaviour
 
     private void AcquireTarget()
     {
-        _target = GameObject.FindGameObjectWithTag("Player")?.transform;
+        _target = PlayerManager.Instance != null ? PlayerManager.Instance.transform : null;
     }
 
     private void Die()

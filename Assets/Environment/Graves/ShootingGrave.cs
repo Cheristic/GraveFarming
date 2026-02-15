@@ -13,7 +13,6 @@ public class ShooterGrave : Grave
     [SerializeField] float CHECK_FOR_ENEMY_INTERVAL = .5f;
     [SerializeField] float TIME_BETWEEN_BULLETS = .2f;
     [SerializeField] float REST_TIME_AFTER_BULLETS = 1f;
-    [SerializeField] LayerMask ENEMIES_LAYER;
 
     List<ShooterBullet> BulletPool;
     public override void Init()
@@ -54,12 +53,11 @@ public class ShooterGrave : Grave
 
     IEnumerator ShooterBehaviorLoop()
     {
-
         while (true)
         {
             Collider2D target = null;
             Vector2 playerPos = PlayerManager.Instance.transform.position;
-            Collider2D[] near_player = Physics2D.OverlapCircleAll(playerPos, PLAYER_CHECK_FOR_ENEMY_RADIUS, ENEMIES_LAYER);
+            Collider2D[] near_player = Physics2D.OverlapCircleAll(playerPos, PLAYER_CHECK_FOR_ENEMY_RADIUS, GlobalLayers.GetLayerMask(GlobalLayers.Layers.Enemies));
             if (near_player.Length > 0) // there are enemies around player
             {
                 Collider2D closestHit = null;
@@ -78,7 +76,7 @@ public class ShooterGrave : Grave
             } 
             if (target == null) // either no enemies near player or none within range
             {
-                Collider2D[] near_grave = Physics2D.OverlapCircleAll(transform.position, SHOOTING_RADIUS, ENEMIES_LAYER);
+                Collider2D[] near_grave = Physics2D.OverlapCircleAll(transform.position, SHOOTING_RADIUS, GlobalLayers.GetLayerMask(GlobalLayers.Layers.Enemies));
                 Collider2D closestHit = null;
                 float closestDistance = Mathf.Infinity;
                 foreach (var hit in near_grave)
@@ -102,6 +100,7 @@ public class ShooterGrave : Grave
             // SHOOT
             for (int i = 0; i < BULLETS_TO_SHOOT; i++) 
             {
+                if (target == null || !target.gameObject.activeInHierarchy) break;
                 var bullet = FetchBulletFromPool();
                 bullet.Shoot(gameObject, gameObject.transform.position, target.transform.position);
 

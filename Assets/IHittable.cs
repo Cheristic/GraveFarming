@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IHittable
 {
-    void Hit();
+    void Hit(float dmg);
 }

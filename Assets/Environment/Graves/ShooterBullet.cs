@@ -5,9 +5,8 @@ public class ShooterBullet : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float MOVE_SPEED;
-    [SerializeField] LayerMask HittableLayers;
-    [SerializeField] LayerMask EnemyLayer;
     [SerializeField] float TIME_OUT = 5f;
+    [SerializeField] float DAMAGE = 5f;
 
     GameObject _firingSource;
     public void Shoot(GameObject source, Vector3 sourcePos, Vector3 target)
@@ -31,11 +30,11 @@ public class ShooterBullet : MonoBehaviour
     {
         if (collision.gameObject == _firingSource) { return; }
 
-        if (((1 << collision.gameObject.layer) & HittableLayers.value) != 0)
+        if (GlobalLayers.IsOnLayer(collision.gameObject, GlobalLayers.Layers.Hittable))
         {
-            if (((1 << collision.gameObject.layer) & EnemyLayer.value) != 0)
+            if (GlobalLayers.IsOnLayer(collision.gameObject, GlobalLayers.Layers.Enemies))
             {
-                collision.gameObject.GetComponent<IHittable>().Hit();
+                if (collision.gameObject.TryGetComponent<IHittable>(out var hit)) hit.Hit(DAMAGE);
             }
             gameObject.SetActive(false);
         }

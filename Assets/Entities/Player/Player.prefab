@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 2313830370825230599}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,6 +143,8 @@ MonoBehaviour:
     cost: 100
   - type: 1
     cost: 100
+  graveValue: {fileID: 0}
+  soulValue: {fileID: 0}
   controls: {fileID: 6670930470796002252}
   _collider: {fileID: 2313830370825230599}
 --- !u!114 &6670930470796002252
