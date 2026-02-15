@@ -26,4 +26,11 @@ public class Entity : MonoBehaviour, IHittable
     }
 
     public void Init() { }
+
+    public virtual void Spawn(Vector2 location)
+    {
+        gameObject.SetActive(true);
+        transform.position = location;
+        _currentHealth = MAX_HEALTH;
+    }
 }

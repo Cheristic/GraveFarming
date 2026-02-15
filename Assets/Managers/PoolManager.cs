@@ -5,6 +5,7 @@ public class PoolManager : MonoBehaviour
     public static PoolManager Instance { get; private set; }
     public GraveObjectPooler gravePooler;
     public GravePiecePooler piecePooler;
+    public EnemyPooler enemyPooler;
 
     private void Awake()
     {

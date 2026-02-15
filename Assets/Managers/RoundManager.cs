@@ -3,6 +3,8 @@ using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 using System.Collections;
+using JetBrains.Annotations;
+using UnityEngine.Events;
 
 public class RoundManager : MonoBehaviour
 {
@@ -49,10 +51,13 @@ public class RoundManager : MonoBehaviour
         BeginActivePhase();
     }
 
+    public static UnityAction<Component> NewRoundStarted;
+
     public void BeginActivePhase()
     {
         StopAllCoroutines(); // stops the above coroutine if active
         roundActive = true;
+        NewRoundStarted.Invoke(this);
     }
     public void BeginRestPhase()
     {
