@@ -5,6 +5,8 @@ using static GlobalLayers;
 public class PlayerControls : MonoBehaviour
 {
     [SerializeField] float MoveSpeed;
+    [SerializeField] Animator animator;
+    [SerializeField] Transform visuals;
 
     internal PlayerInput input;
     Rigidbody2D rb;
@@ -31,6 +33,8 @@ public class PlayerControls : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 inputDir = input.Player.Move.ReadValue<Vector2>();
+        if (inputDir.x != 0) visuals.localScale = new Vector3(Mathf.Sign(inputDir.x) * 1,1,1);
+
         rb.linearVelocity = inputDir * MoveSpeed;
     }
 
