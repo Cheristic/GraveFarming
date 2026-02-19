@@ -22,6 +22,7 @@ public class GridManager : MonoBehaviour
     {
         Vector2Int gridPos = ToGridSpace(pos);
         Grid[gridPos.x, gridPos.y] = 1;
+        Debug.Log("Place at " + gridPos + " " + ToWorldSpace(gridPos));
         return ToWorldSpace(gridPos);
     }
 

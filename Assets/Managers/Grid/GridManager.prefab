@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ada3a2f04eec704a8e7d8f4274793b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridManager
-  GridDimensions: {x: 10, y: 20}
+  GridDimensions: {x: 19, y: 11}
   WorldtoGridRatio: 0.5
 --- !u!1 &3473037728621316242
 GameObject:
@@ -128,8 +128,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -146412745
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 1346340809271695985, guid: fc2e83618c785824f8f16f11bd8d6856, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5058824}
@@ -186,7 +186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3a54c597918cc49a6c8472006a0b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPlaceGraves
-  pooler: {fileID: 0}
-  GravePreviewLocation: {fileID: 0}
+  GravePreviewLocation: {fileID: 774850545629847525}
   ValidPlaceColor: {r: 1, g: 1, b: 1, a: 0.7882353}
   InvalidPlaceColor: {r: 0.8867924, g: 0.2694337, b: 0.14222129, a: 0.44313726}
