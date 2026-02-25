@@ -67,7 +67,7 @@ public class RoundManager : MonoBehaviour
         roundText.text = string.Format("{0:00}", roundNum);
 
         // Debugging
-        Debug.Log("End");
+        Debug.Log("End rest");
 
         StartCoroutine(RestPeriodTimer());
     }

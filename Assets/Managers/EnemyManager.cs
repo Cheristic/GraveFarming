@@ -38,12 +38,10 @@ public class EnemyManager : MonoBehaviour
         do
         {
             Vector2Int pos = GridManager.Instance.RandomGridPos();
-            Debug.Log("grid: " + pos);
             spawnPos = GridManager.Instance.NewRandomPos(GridManager.Instance.ToWorldSpace(pos), new Vector2(2 * cellSize / 3, 2 * cellSize / 3));
         } while (!ValidSpawnerPosition(spawnPos));
 
         spawner.gameObject.transform.position = new Vector3(spawnPos.x, spawnPos.y, 0);
-        Debug.Log(spawnPos);
     }
 
     private void SpawnEnemies(Component component)

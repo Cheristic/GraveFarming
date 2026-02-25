@@ -22,7 +22,7 @@ public class Entity : MonoBehaviour, IHittable
     public virtual void Die()
     {
         Debug.Log($"{name} died.");
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void Init() { }
