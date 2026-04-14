@@ -48,14 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShooterBullet
   rb: {fileID: 5083401885006157842}
-  MOVE_SPEED: 5
-  HittableLayers:
-    serializedVersion: 2
-    m_Bits: 256
-  EnemyLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  TIME_OUT: 5
+  MOVE_SPEED: 4
+  TIME_OUT: 2
+  DAMAGE: 5
 --- !u!212 &6622498716055955342
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ public class ShooterBullet : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float MOVE_SPEED;
-    [SerializeField] float TIME_OUT = 5f;
+    [SerializeField] float TIME_OUT = 2f;
     [SerializeField] float DAMAGE = 5f;
 
     GameObject _firingSource;

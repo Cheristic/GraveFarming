@@ -5,6 +5,7 @@ using Enemy = Entity;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] int spawnAmount;
+    [SerializeField] float spawnDelay;
 
     private void Update()
     {
@@ -22,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
             int type = Random.Range(0, 2);
             Enemy enemy = PoolManager.Instance.enemyPooler.GetEnemy((EnemyDataBase.EnemyType)type);
             enemy.Spawn(new Vector2(transform.position.x, transform.position.y));
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(spawnDelay);
         }
     }
 

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   spawnAmount: 2
+  spawnDelay: 0.5
 --- !u!212 &-4455832857568524256
 SpriteRenderer:
   m_ObjectHideFlags: 0
