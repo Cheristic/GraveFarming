@@ -1,5 +1,6 @@
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
+using UnityEngine.Events;
 
 public class GridManager : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class GridManager : MonoBehaviour
     [SerializeField] public float WorldtoGridRatio;
 
     int[,] Grid;
+
+    // Events
+    public static UnityAction<Vector2Int> GravePlaced;
+    public static UnityAction<Vector2Int> GraveDestroyed;
 
     public Vector2Int ToGridSpace(Vector2 v) => new(Mathf.RoundToInt(v.x * WorldtoGridRatio), Mathf.RoundToInt(v.y * WorldtoGridRatio));
     public Vector2 ToWorldSpace(Vector2Int v) => new Vector2(v.x / WorldtoGridRatio, v.y / WorldtoGridRatio);
@@ -22,6 +27,7 @@ public class GridManager : MonoBehaviour
     {
         Vector2Int gridPos = ToGridSpace(pos);
         Grid[gridPos.x, gridPos.y] = 1;
+        GravePlaced?.Invoke(gridPos);
         //Debug.Log("Place at " + gridPos + " " + ToWorldSpace(gridPos));
         return ToWorldSpace(gridPos);
     }
@@ -30,6 +36,7 @@ public class GridManager : MonoBehaviour
     {
         Vector2Int gridPos = ToGridSpace(graveWorldPos);
         Grid[gridPos.x, gridPos.y] = 0;
+        GraveDestroyed?.Invoke(gridPos);
     }
 
     public bool HasGraveAt(Vector2 pos)

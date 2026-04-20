@@ -52,7 +52,6 @@ public class RoundManager : MonoBehaviour
     }
 
     public static UnityAction<Component> NewRoundStarted;
-
     public void BeginActivePhase()
     {
         StopAllCoroutines(); // stops the above coroutine if active
