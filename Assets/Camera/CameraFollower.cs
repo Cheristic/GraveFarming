@@ -6,37 +6,35 @@ using UnityEngine;
 public class CameraFollower : MonoBehaviour
 {
     [SerializeField] Transform player;
-    [SerializeField] float threshold;
-    [SerializeField] float distanceLimiter;
+    [SerializeField] Vector2 DEADZONE_SIZE;
 
     // Cameras and camera bounds
-    Camera cam;
     Vector2 boundsX;
     Vector2 boundsY;
-
-    private void Awake()
-    {
-        cam = gameObject.GetComponent<Camera>();
-    }
 
     private void OnEnable()
     {
         Vector2 worldMax = GridManager.Instance.ToWorldSpace(GridManager.Instance.GridDimensions) - new Vector2(1.0f, 1.0f);
 
-        // Create bounds relative to camera center
-        boundsX = new Vector2(cam.aspect * cam.orthographicSize - 1, worldMax.x - cam.aspect * cam.orthographicSize);
-        boundsY = new Vector2(cam.orthographicSize - 1, worldMax.y - cam.orthographicSize);
+        boundsX = new Vector2(worldMax.x / 2 - DEADZONE_SIZE.x / 2, worldMax.x / 2 + DEADZONE_SIZE.x / 2);
+        boundsY = new Vector2(worldMax.y / 2 - DEADZONE_SIZE.y / 2, worldMax.y / 2 + DEADZONE_SIZE.y / 2);
 
-        Vector3 targetPos = player.position;
-        targetPos.z = transform.position.z;
+        transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
 
-        if (targetPos.x <= boundsX.x) targetPos.x = boundsX.x;
-        else if (targetPos.x >= boundsX.y) targetPos.x = boundsX.y;
+       //// Create bounds relative to camera center
+       //boundsX = new Vector2(cam.aspect * cam.orthographicSize - 1, worldMax.x - cam.aspect * cam.orthographicSize);
+       // boundsY = new Vector2(cam.orthographicSize - 1, worldMax.y - cam.orthographicSize);
 
-        if (targetPos.y <= boundsY.x) targetPos.y = boundsY.x;
-        else if (targetPos.y >= boundsY.y) targetPos.y = boundsY.y;
+       // Vector3 targetPos = player.position;
+       // targetPos.z = transform.position.z;
 
-        transform.position = targetPos;
+       // if (targetPos.x <= boundsX.x) targetPos.x = boundsX.x;
+       // else if (targetPos.x >= boundsX.y) targetPos.x = boundsX.y;
+
+       // if (targetPos.y <= boundsY.x) targetPos.y = boundsY.x;
+       // else if (targetPos.y >= boundsY.y) targetPos.y = boundsY.y;
+
+       // transform.position = targetPos;
     }
     void Update()
     {
@@ -46,19 +44,24 @@ public class CameraFollower : MonoBehaviour
         //Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         //Vector3 targetPos = dir.normalized * (Vector2.Distance(mousePos, player.position) / distanceLimiter);
-        Vector3 targetPos = player.position;// Vector3.ClampMagnitude(targetPos, threshold) + player.position;
-        targetPos.z = transform.position.z;
+        //Vector3 targetPos = player.position;// Vector3.ClampMagnitude(targetPos, threshold) + player.position;
+        //targetPos.z = transform.position.z;
 
-        if (targetPos.x <= boundsX.x || targetPos.x >= boundsX.y)
-        {
-            targetPos.x = transform.position.x;
-        }
+        transform.position = new Vector3(Mathf.Clamp(player.position.x, boundsX.x, boundsX.y),
+                                        Mathf.Clamp(player.position.y, boundsY.x, boundsY.y),
+                                        transform.position.z);
 
-        if (targetPos.y <= boundsY.x || targetPos.y >= boundsY.y)
-        {
-            targetPos.y = transform.position.y;
-        }
+        //if (targetPos.x <= boundsX.x || targetPos.x >= boundsX.y)
+        //{
+        //    targetPos.x = transform.position.x;
+        //}
 
-        transform.position = targetPos;
+        //if (targetPos.y <= boundsY.x || targetPos.y >= boundsY.y)
+        //{
+        //    targetPos.y = transform.position.y;
+        //}
+
+        //Debug.Log(targetPos);
+        //transform.position = targetPos;
     }
 }
