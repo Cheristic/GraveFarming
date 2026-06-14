@@ -22,6 +22,11 @@ public class PlayerManager : MonoBehaviour
         controls.Init();
     }
 
+    private void OnDisable()
+    {
+        controls.enabled = false;
+    }
+
     private void Start()
     {
         Array.Sort(playerResources, GraveDatabase.CompareResourceRequirements);

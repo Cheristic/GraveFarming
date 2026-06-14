@@ -53,7 +53,7 @@ public class ShooterGrave : Grave
 
     IEnumerator ShooterBehaviorLoop()
     {
-        while (true)
+        while (GameManager.Main.GameIsActive)
         {
             Collider2D target = null;
             Vector2 playerPos = PlayerManager.Instance.transform.position;

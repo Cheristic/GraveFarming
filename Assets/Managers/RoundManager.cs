@@ -22,6 +22,17 @@ public class RoundManager : MonoBehaviour
     {
         Instance = this;
         BeginNextRound();
+        GameManager.OnEndGame += OnEndGame;
+    }
+
+    void OnEndGame()
+    {
+        StopAllCoroutines();
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnEndGame -= OnEndGame;
     }
 
     void Update()

@@ -16,6 +16,16 @@ public class PlayerPlaceGraves : MonoBehaviour
         LastSelectedType = GraveDatabase.Instance.GraveList[0];
         PlayerManager.Instance.Input.Player.PlaceGrave.started += AttemptPlaceGrave;
         PlayerManager.Instance.Input.Player.SelectGrave.started += SelectGraveType;
+        GameManager.OnEndGame += OnEndGame;
+    }
+
+    void OnEndGame()
+    {
+        PlayerManager.Instance.Input.Player.PlaceGrave.started += AttemptPlaceGrave;
+        PlayerManager.Instance.Input.Player.SelectGrave.started += SelectGraveType;
+        GameManager.OnEndGame -= OnEndGame;
+        GravePreviewLocation.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     void SelectGraveType(InputAction.CallbackContext ctx)

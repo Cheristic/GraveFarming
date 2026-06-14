@@ -14,7 +14,7 @@ public class Entity : MonoBehaviour, IHittable
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Hit(float dmg)
+    public virtual void Hit(float dmg)
     {
         _currentHealth -= dmg;
         if (_currentHealth <= 0f) Die();
