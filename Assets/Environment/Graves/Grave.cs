@@ -37,7 +37,7 @@ public class Grave : MonoBehaviour, IHittable
         for (int i = 0; i < numGravePieces; i++)
         {
             Vector2 piecePos = GridManager.Instance.NewRandomPos(pos, new Vector2(2 * cellSize / 3, 2 * cellSize / 3));
-            GravePiece piece = PoolManager.Instance.piecePooler.GetGravePiece();
+            GravePiece piece = PoolManager.Instance.gravePiecePooler.GetGravePiece();
             piece.gameObject.transform.position = piecePos;
             piece.Spawn();
         }

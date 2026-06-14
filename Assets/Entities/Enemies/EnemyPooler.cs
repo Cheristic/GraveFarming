@@ -2,8 +2,6 @@ using System.Collections.Generic;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
 
-using Enemy = Entity;
-
 public class EnemyPooler : MonoBehaviour
 {
     List<List<GameObject>> EnemyPools;
@@ -21,7 +19,7 @@ public class EnemyPooler : MonoBehaviour
             {
                 Enemy enemy = Instantiate(EnemyDataBase.Instance.EnemyList[i].enemyPrefab, this.transform).GetComponent<Enemy>();
                 enemy.gameObject.SetActive(false);
-                enemy.Init();
+                enemy.Init(EnemyDataBase.Instance.EnemyList[i]);
                 EnemyPool.Add(enemy.gameObject);
             }
 
@@ -43,7 +41,7 @@ public class EnemyPooler : MonoBehaviour
 
         Enemy enemy = Instantiate(EnemyDataBase.Instance.EnemyList[(int)type].enemyPrefab, this.transform).GetComponent<Enemy>();
         enemy.gameObject.SetActive(false);
-        enemy.Init();
+        enemy.Init(EnemyDataBase.Instance.EnemyList[(int)type]);
         pool.Add(enemy.gameObject);
         return enemy;
     }

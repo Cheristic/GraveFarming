@@ -6,6 +6,8 @@ public class Entity : MonoBehaviour, IHittable
     internal float _currentHealth;
     protected Rigidbody2D _rb;
 
+    internal bool isAlive = false;
+
     public void Awake()
     {
         _currentHealth = MAX_HEALTH;
@@ -23,14 +25,18 @@ public class Entity : MonoBehaviour, IHittable
     {
         Debug.Log($"{name} died.");
         gameObject.SetActive(false);
+        isAlive = false;
     }
 
-    public void Init() { }
+    public virtual void Init() { }
 
     public virtual void Spawn(Vector2 location)
     {
         gameObject.SetActive(true);
         transform.position = location;
         _currentHealth = MAX_HEALTH;
+        isAlive = true;
     }
+
+
 }

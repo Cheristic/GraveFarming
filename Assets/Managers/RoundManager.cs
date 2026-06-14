@@ -8,37 +8,54 @@ using UnityEngine.Events;
 
 public class RoundManager : MonoBehaviour
 {
+    public static RoundManager Instance { get; private set; }   
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] TextMeshProUGUI roundText;
+    [SerializeField] GameObject skipRestButton;
     [SerializeField] float restTime = 30.0f;
-    [SerializeField] int roundNum = 1;
+    [SerializeField] float activeMaxTime = 60.0f;
 
-    bool roundActive;
+    int roundNum = 0;
+
+    internal bool roundActive;
     void Start()
     {
-        roundActive = false;
-        // start rest period
-        StartCoroutine(RestPeriodTimer());
-        roundText.text = string.Format("{0:0}", roundNum);
+        Instance = this;
+        BeginNextRound();
     }
 
     void Update()
     {
+#if UNITY_EDITOR
         // This causes issues with the Input System Package
         if (Input.GetKeyDown(KeyCode.P))
         {
-            if (roundActive) BeginRestPhase();
+            if (roundActive) BeginNextRound();
             else
             {
                 timerText.text = string.Format("00:00");
                 BeginActivePhase();
             }
         }
+#endif
     }
-
-    IEnumerator RestPeriodTimer()
+    public static event Action TriggerRestPhase;
+    public void BeginNextRound()
     {
-        float timeRemaining = restTime;
+        StopAllCoroutines();
+
+        ++roundNum;
+        roundText.text = string.Format("{0:00}", roundNum);
+        skipRestButton.SetActive(true);
+
+        roundActive = false;
+        TriggerRestPhase?.Invoke();
+
+        StartCoroutine(Timer());
+    }
+    IEnumerator Timer()
+    {
+        float timeRemaining = roundActive ? activeMaxTime : restTime;
         while (timeRemaining > 0)
         {
             int minutes = Mathf.FloorToInt(timeRemaining / 60);
@@ -48,26 +65,19 @@ public class RoundManager : MonoBehaviour
             timeRemaining -= Time.deltaTime;
         }
 
-        BeginActivePhase();
+        if (roundActive) BeginNextRound();
+        else BeginActivePhase();
     }
 
-    public static UnityAction<Component> NewRoundStarted;
+    public static event Action TriggerActivePhase;
     public void BeginActivePhase()
     {
         StopAllCoroutines(); // stops the above coroutine if active
+        skipRestButton.SetActive(false);
         roundActive = true;
-        NewRoundStarted.Invoke(this);
+        TriggerActivePhase.Invoke();
+
+        StartCoroutine(Timer());
     }
-    public void BeginRestPhase()
-    {
-        ++roundNum;
-        roundActive = false;
 
-        roundText.text = string.Format("{0:00}", roundNum);
-
-        // Debugging
-        Debug.Log("End rest");
-
-        StartCoroutine(RestPeriodTimer());
-    }
 }

@@ -4,7 +4,9 @@ public class PoolManager : MonoBehaviour
 {
     public static PoolManager Instance { get; private set; }
     public GraveObjectPooler gravePooler;
-    public GravePiecePooler piecePooler;
+    public GravePiecePooler gravePiecePooler;
+    public SoulPiecePooler soulPiecePooler;
+
     public EnemyPooler enemyPooler;
 
     private void Awake()

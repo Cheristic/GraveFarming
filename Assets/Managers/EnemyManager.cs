@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -16,15 +16,17 @@ public class EnemyManager : MonoBehaviour
     {
         if (Main != null && Main != this) Destroy(this);
         else Main = this;
+
+        RoundManager.TriggerActivePhase += SpawnEnemies;
+        RoundManager.TriggerRestPhase += ChooseNewSpawnerPositions;
     }
 
-    private void OnEnable()
+    private void OnDisable()
     {
-        RoundManager.NewRoundStarted += SpawnEnemies;
+        RoundManager.TriggerActivePhase -= SpawnEnemies;
+        RoundManager.TriggerRestPhase -= ChooseNewSpawnerPositions;
     }
     
-
-    float cellSize { get => 1.0f / GridManager.Instance.WorldtoGridRatio; }
     void SetSpawnPosition(EnemySpawner spawner)
     {
         bool ValidSpawnerPosition(Vector2 pos)
@@ -37,19 +39,50 @@ public class EnemyManager : MonoBehaviour
         Vector2 spawnPos = new();
         do
         {
-            Vector2Int pos = GridManager.Instance.RandomGridPos();
-            spawnPos = GridManager.Instance.NewRandomPos(GridManager.Instance.ToWorldSpace(pos), new Vector2(2 * cellSize / 3, 2 * cellSize / 3));
+            spawnPos = GridManager.Instance.ToWorldSpace(GridManager.Instance.RandomGridPos());
+            //spawnPos = GridManager.Instance.NewRandomPos(GridManager.Instance.ToWorldSpace(pos), new Vector2(2 * cellSize / 3, 2 * cellSize / 3));
         } while (!ValidSpawnerPosition(spawnPos));
 
         spawner.gameObject.transform.position = new Vector3(spawnPos.x, spawnPos.y, 0);
     }
 
-    private void SpawnEnemies(Component component)
+    private void ChooseNewSpawnerPositions()
     {
         foreach (EnemySpawner spawner in spawnerList)
         {
             SetSpawnPosition(spawner);
-            spawner.SpawnEnemies();
+        }
+    }
+    private void SpawnEnemies()
+    {
+        List<Enemy> spawned = new();
+        foreach (EnemySpawner spawner in spawnerList)
+        {
+            spawned.AddRange(spawner.SpawnEnemies());
+        }
+
+        StartCoroutine(CheckEnemyStatus());
+
+        IEnumerator CheckEnemyStatus()
+        {
+            bool enemiesAlive = true;
+            while (RoundManager.Instance.roundActive && enemiesAlive)
+            {
+                yield return null;
+                enemiesAlive = false;
+                foreach (var enemy in spawned)
+                {
+                    if (!enemy.hasSpawned || enemy.isAlive) {
+                        enemiesAlive = true;
+                        break;
+                    }
+                }
+            }
+
+            if (RoundManager.Instance.roundActive)
+            {
+                RoundManager.Instance.BeginNextRound();
+            }
         }
     }
 }

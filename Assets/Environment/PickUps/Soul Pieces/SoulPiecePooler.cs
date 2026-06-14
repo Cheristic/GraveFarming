@@ -36,11 +36,13 @@ public class SoulPiecePooler : MonoBehaviour
 
     private void Update()
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.K))
         {
             SoulPiece soul = GetSoulPiece();
             soul.Spawn();
             soul.gameObject.transform.position = PlayerManager.Instance.gameObject.transform.position + new Vector3(1.0f, 1.0f, 0.0f);
         }
+#endif
     }
 }

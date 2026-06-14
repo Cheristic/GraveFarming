@@ -13,17 +13,11 @@ public class EnemyDataBase : MonoBehaviour
         EnemyType2
     }
 
-    public enum ResourceDrops
-    {
-        SoulPieces,
-
-    }
-
     [Serializable]
     public class EnemyData
     {
         public EnemyType type;
-        public ResourceDrops[] resourceDrops;
+        public int soulPiecesDropped;
         public Sprite sprite;
         public GameObject enemyPrefab;
     }

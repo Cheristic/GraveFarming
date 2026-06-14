@@ -1,7 +1,7 @@
 using UnityEngine;
 using Layers = GlobalLayers.Layers;
 
-public class Enemy2 : Entity
+public class Enemy2 : Enemy
 {
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float contactDamage = 10f;

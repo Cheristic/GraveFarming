@@ -2,7 +2,7 @@ using UnityEngine;
 using static Unity.VisualScripting.Member;
 using Layers = GlobalLayers.Layers;
 
-public class Enemy1 : Entity
+public class Enemy1 : Enemy
 {
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float contactDamage = 10f;

@@ -16,6 +16,8 @@ public class GridManager : MonoBehaviour
 
     public Vector2Int ToGridSpace(Vector2 v) => new(Mathf.RoundToInt(v.x * WorldtoGridRatio), Mathf.RoundToInt(v.y * WorldtoGridRatio));
     public Vector2 ToWorldSpace(Vector2Int v) => new Vector2(v.x / WorldtoGridRatio, v.y / WorldtoGridRatio);
+    public float cellSize { get => 1.0f / GridManager.Instance.WorldtoGridRatio; }
+
     private void Awake()
     {
         if (Instance != null && Instance != this) Destroy(this);
