@@ -15,7 +15,7 @@ public class RoundManager : MonoBehaviour
     [SerializeField] float restTime = 30.0f;
     [SerializeField] float activeMaxTime = 60.0f;
 
-    int roundNum = 0;
+    internal int roundNum = 0;
 
     internal bool roundActive;
     void Start()

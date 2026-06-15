@@ -30,7 +30,7 @@ public class Enemy2 : Enemy
         if (distance <= 0.05f) return;
 
         Vector2 direction = toTarget / distance;
-        _rb.MovePosition(_rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+        _rb.MovePosition(_rb.position + direction * moveSpeed / 60);
     }
 
 

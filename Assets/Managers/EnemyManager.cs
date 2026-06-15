@@ -10,6 +10,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] public List<EnemySpawner> spawnerList;
 
     Vector2Int gridDimensions { get => GridManager.Instance.GridDimensions; }
+    System.Random rand;
 
     public static EnemyManager Main { get; private set; }
     private void Awake()
@@ -19,6 +20,7 @@ public class EnemyManager : MonoBehaviour
 
         RoundManager.TriggerActivePhase += SpawnEnemies;
         RoundManager.TriggerRestPhase += ChooseNewSpawnerPositions;
+        rand = new(0);
     }
 
     private void OnDisable()
@@ -39,7 +41,7 @@ public class EnemyManager : MonoBehaviour
         Vector2 spawnPos = new();
         do
         {
-            spawnPos = GridManager.Instance.ToWorldSpace(GridManager.Instance.RandomGridPos());
+            spawnPos = GridManager.Instance.ToWorldSpace(GridManager.Instance.RandomGridPos(rand));
             //spawnPos = GridManager.Instance.NewRandomPos(GridManager.Instance.ToWorldSpace(pos), new Vector2(2 * cellSize / 3, 2 * cellSize / 3));
         } while (!ValidSpawnerPosition(spawnPos));
 

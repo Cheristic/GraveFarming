@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPooler : MonoBehaviour
 {
-    List<List<GameObject>> EnemyPools;
+    List<List<Enemy>> EnemyPools;
     [SerializeField] int PrespawnEnemyAmount;
 
     private void Start()
@@ -13,14 +13,14 @@ public class EnemyPooler : MonoBehaviour
 
         for (int i = 0; i < EnemyDataBase.Instance.EnemyList.Count; i++)
         {
-            List<GameObject> EnemyPool = new();
+            List<Enemy> EnemyPool = new();
 
             for (int j = 0; j < PrespawnEnemyAmount; j++)
             {
                 Enemy enemy = Instantiate(EnemyDataBase.Instance.EnemyList[i].enemyPrefab, this.transform).GetComponent<Enemy>();
                 enemy.gameObject.SetActive(false);
                 enemy.Init(EnemyDataBase.Instance.EnemyList[i]);
-                EnemyPool.Add(enemy.gameObject);
+                EnemyPool.Add(enemy);
             }
 
             EnemyPools.Add(EnemyPool);
@@ -29,20 +29,20 @@ public class EnemyPooler : MonoBehaviour
 
     public Enemy GetEnemy(EnemyDataBase.EnemyType type)
     {
-        List<GameObject> pool = EnemyPools[(int)type];
+        List<Enemy> pool = EnemyPools[(int)type];
 
         for (int i = 0; i < pool.Count; i++)
         {
-            if (!pool[i].gameObject.activeInHierarchy)
+            if (!pool[i].isAlive)
             {
-                return pool[i].gameObject.GetComponent<Enemy>();
+                return pool[i];
             }
         }
 
         Enemy enemy = Instantiate(EnemyDataBase.Instance.EnemyList[(int)type].enemyPrefab, this.transform).GetComponent<Enemy>();
         enemy.gameObject.SetActive(false);
         enemy.Init(EnemyDataBase.Instance.EnemyList[(int)type]);
-        pool.Add(enemy.gameObject);
+        pool.Add(enemy);
         return enemy;
     }
 }

@@ -21,12 +21,18 @@ public class PlayerPlaceGraves : MonoBehaviour
 
     void OnEndGame()
     {
+        gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
         PlayerManager.Instance.Input.Player.PlaceGrave.started += AttemptPlaceGrave;
         PlayerManager.Instance.Input.Player.SelectGrave.started += SelectGraveType;
         GameManager.OnEndGame -= OnEndGame;
         GravePreviewLocation.gameObject.SetActive(false);
-        gameObject.SetActive(false);
     }
+
+
 
     void SelectGraveType(InputAction.CallbackContext ctx)
     {

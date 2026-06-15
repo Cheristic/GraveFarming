@@ -30,7 +30,7 @@ public class Enemy1 : Enemy
         if (distance <= 0.05f) return;
 
         Vector2 direction = toTarget / distance;
-        _rb.MovePosition(_rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+        _rb.MovePosition(_rb.position + direction * moveSpeed / 60);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -41,7 +41,6 @@ public class Enemy1 : Enemy
             GlobalLayers.IsOnLayer(collision.gameObject, Layers.Grave))
             if (collision.gameObject.TryGetComponent<IHittable>(out var hit))
             {
-                Debug.Log("hit " +  collision.gameObject.name);
                 hit.Hit(contactDamage);
                 _lastAttackTime = Time.time;
             }

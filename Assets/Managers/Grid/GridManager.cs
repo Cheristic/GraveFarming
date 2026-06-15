@@ -48,15 +48,13 @@ public class GridManager : MonoBehaviour
         return Grid[gridPos.x, gridPos.y] == 1;
     }
 
-    public Vector2Int RandomGridPos()
+    public Vector2Int RandomGridPos(System.Random rand)
     {
-        System.Random rand = new System.Random();
         return new Vector2Int(rand.Next(GridDimensions.x), rand.Next(GridDimensions.y));
     }
 
-    public Vector2 NewRandomPos(Vector2 pos, Vector2 range)
+    public Vector2 NewRandomPos(Vector2 pos, Vector2 range, System.Random rand)
     {
-        System.Random rand = new System.Random();
         Vector2 randomMod = new Vector2((float)(rand.NextDouble() - 0.5) * range.x, (float)(rand.NextDouble() - 0.5) * range.y);
         Vector2 newPos = pos + randomMod;
         return newPos;

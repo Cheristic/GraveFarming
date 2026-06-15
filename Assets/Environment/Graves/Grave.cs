@@ -8,8 +8,11 @@ public class Grave : MonoBehaviour, IHittable
     [SerializeField] int numGravePieces;
     [SerializeField] float initialHealth;
     float health;
+    System.Random rand;
 
-    public virtual void Init() { }
+    public virtual void Init() {
+        rand = new(0);
+    }
     public virtual void Spawn(Vector2 location) 
     {
         gameObject.SetActive(true);
@@ -36,7 +39,7 @@ public class Grave : MonoBehaviour, IHittable
     {
         for (int i = 0; i < numGravePieces; i++)
         {
-            Vector2 piecePos = GridManager.Instance.NewRandomPos(pos, new Vector2(2 * cellSize / 3, 2 * cellSize / 3));
+            Vector2 piecePos = GridManager.Instance.NewRandomPos(pos, new Vector2(2 * cellSize / 3, 2 * cellSize / 3), rand);
             GravePiece piece = PoolManager.Instance.gravePiecePooler.GetGravePiece();
             piece.gameObject.transform.position = piecePos;
             piece.Spawn();

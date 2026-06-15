@@ -37,8 +37,10 @@ public class EnemySpawner : MonoBehaviour
         List<Enemy> enemies = new();
         for (int i = 0; i < spawnAmount; i++)
         {
-            int type = Random.Range(0, 2);
+            System.Random random = new(RoundManager.Instance.roundNum * spawnAmount + i);
+            int type = random.Next(2);
             Enemy enemy = PoolManager.Instance.enemyPooler.GetEnemy((EnemyDataBase.EnemyType)type);
+            enemy.isAlive = true;
             enemy.hasSpawned = false;
             enemies.Add(enemy);
         }

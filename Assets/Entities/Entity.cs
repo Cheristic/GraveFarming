@@ -6,7 +6,7 @@ public class Entity : MonoBehaviour, IHittable
     internal float _currentHealth;
     protected Rigidbody2D _rb;
 
-    internal bool isAlive = false;
+    internal bool isAlive = true;
 
     public void Awake()
     {
@@ -18,12 +18,12 @@ public class Entity : MonoBehaviour, IHittable
     {
         _currentHealth -= dmg;
         if (_currentHealth <= 0f) Die();
-        else Debug.Log($"{name} got hit! HP: {_currentHealth}/{MAX_HEALTH}");
+        //else Debug.Log($"{name} got hit! HP: {_currentHealth}/{MAX_HEALTH}");
     }
 
     public virtual void Die()
     {
-        Debug.Log($"{name} died.");
+        //Debug.Log($"{name} died.");
         gameObject.SetActive(false);
         isAlive = false;
     }
