@@ -41,7 +41,9 @@ public class EnemyManager : MonoBehaviour
         Vector2 spawnPos = new();
         do
         {
-            spawnPos = GridManager.Instance.ToWorldSpace(GridManager.Instance.RandomGridPos(rand));
+
+            spawnPos = PerformanceTestManager.Instance == null ? GridManager.Instance.ToWorldSpace(GridManager.Instance.RandomGridPos(rand)) :
+                        GridManager.Instance.ToWorldSpace(new Vector2Int(GridManager.Instance.GridDimensions.x / 2, GridManager.Instance.GridDimensions.y / 2));;
             //spawnPos = GridManager.Instance.NewRandomPos(GridManager.Instance.ToWorldSpace(pos), new Vector2(2 * cellSize / 3, 2 * cellSize / 3));
         } while (!ValidSpawnerPosition(spawnPos));
 

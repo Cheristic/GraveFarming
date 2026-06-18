@@ -1,12 +1,15 @@
+using NUnit.Framework.Internal;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PerformanceTestManager : MonoBehaviour
 {
+    public static PerformanceTestManager Instance;
     [SerializeField] GameObject[] DisableTheseObjects;
     private void Awake()
     {
+        Instance = this;
         UnityEngine.Random.InitState(0);
     }
 
