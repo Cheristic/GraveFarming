@@ -1,5 +1,5 @@
 using UnityEngine;
-public class Enemy : Entity
+public class Enemy : EntityObj
 {
     internal bool hasSpawned = false;
     EnemyDataBase.EnemyData data;

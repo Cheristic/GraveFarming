@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-public class PlayerHealth : Entity
+public class PlayerHealth : EntityObj
 {
     [SerializeField] float invulnerabilityTime = .33f;
     private new void Awake()
