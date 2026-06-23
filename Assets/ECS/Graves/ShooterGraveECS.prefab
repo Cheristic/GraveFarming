@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8604958468139307540}
   - component: {fileID: 7701275922117136128}
   - component: {fileID: 7764368375855020640}
+  - component: {fileID: 6263085928293451265}
   m_Layer: 6
   m_Name: ShooterGraveECS
   m_TagString: Untagged
@@ -159,3 +160,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &6263085928293451265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4955887990762712436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8451a35f12daa7542904ba3edf2760f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterGraveAuthoring
+  PLAYER_CHECK_FOR_ENEMY_RADIUS: 6
+  SHOOTING_RADIUS: 5
+  BULLETS_TO_SHOOT: 3
+  CHECK_FOR_ENEMY_INTERVAL: 0.5
+  TIME_BETWEEN_BULLETS: 0.56
+  REST_TIME_AFTER_BULLETS: 1

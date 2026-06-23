@@ -61,7 +61,6 @@ public partial struct CollisionSystem : ISystem
         {
             float3 delta = a - b;
             float dist = delta.x * delta.x + delta.y + delta.y;
-            Debug.Log(dist + " " + radius);
             return dist <= radius;
         }
     }

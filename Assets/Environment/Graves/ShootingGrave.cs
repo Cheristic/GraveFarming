@@ -115,15 +115,6 @@ public class ShooterGrave : Grave
         }
     }
 
-    void Shoot(Collider2D target)
-    {
-        Vector2 dir = target.transform.position - transform.position;
-        ShooterBullet newBullet = Instantiate<ShooterBullet>(_SHOOTER_BULLET, gameObject.transform.position, 
-            Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg));
-        newBullet.Shoot(gameObject);
-       // ShooterBulletSpawnerSystem.Instance.SpawnBullet(gameObject.transform.position, target.transform.position);
-    }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
