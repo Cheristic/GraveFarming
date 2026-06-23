@@ -119,6 +119,121 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &35010649
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6089361557943963866, guid: 8a7b68c2ae52d1c45a651078e6bf285e, type: 3}
+      propertyPath: m_Name
+      value: EnemyECS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790746288289540859, guid: 8a7b68c2ae52d1c45a651078e6bf285e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790746288289540859, guid: 8a7b68c2ae52d1c45a651078e6bf285e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790746288289540859, guid: 8a7b68c2ae52d1c45a651078e6bf285e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790746288289540859, guid: 8a7b68c2ae52d1c45a651078e6bf285e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790746288289540859, guid: 8a7b68c2ae52d1c45a651078e6bf285e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790746288289540859, guid: 8a7b68c2ae52d1c45a651078e6bf285e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790746288289540859, guid: 8a7b68c2ae52d1c45a651078e6bf285e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790746288289540859, guid: 8a7b68c2ae52d1c45a651078e6bf285e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790746288289540859, guid: 8a7b68c2ae52d1c45a651078e6bf285e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790746288289540859, guid: 8a7b68c2ae52d1c45a651078e6bf285e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8a7b68c2ae52d1c45a651078e6bf285e, type: 3}
+--- !u!1 &999824707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 999824709}
+  - component: {fileID: 999824710}
+  - component: {fileID: 999824708}
+  m_Layer: 0
+  m_Name: ProjectileDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &999824708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999824707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95cb61e970de478a26038428ff536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileDatabaseComponentAuthoring
+  shooterBulletPrefab: {fileID: 4269441505924132784, guid: b95bf3a321d50d248aae34a8de69ca8d, type: 3}
+--- !u!4 &999824709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999824707}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &999824710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999824707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 546ea915f0c5c524daeff5b18aaf7637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Settings
 --- !u!1001 &9000826313071543280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,6 +245,10 @@ PrefabInstance:
     - target: {fileID: 4269441505924132784, guid: b95bf3a321d50d248aae34a8de69ca8d, type: 3}
       propertyPath: m_Name
       value: shooterBulletECS
+      objectReference: {fileID: 0}
+    - target: {fileID: 4269441505924132784, guid: b95bf3a321d50d248aae34a8de69ca8d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7776414983717076855, guid: b95bf3a321d50d248aae34a8de69ca8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -181,3 +300,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 9000826313071543280}
+  - {fileID: 999824709}
+  - {fileID: 35010649}

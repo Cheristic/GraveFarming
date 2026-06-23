@@ -30,4 +30,5 @@ public struct ProjectileComponent : IComponentData
     public float MOVE_SPEED;
     public float TIME_OUT;
     public float DAMAGE;
+    public float3 dir;
 }

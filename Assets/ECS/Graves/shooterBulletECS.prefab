@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8761236488633791208}
   - component: {fileID: 409839045185284917}
   - component: {fileID: 7481890266849529838}
+  - component: {fileID: -3237623343101060152}
   m_Layer: 0
   m_Name: shooterBulletECS
   m_TagString: Untagged
@@ -171,3 +172,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-3237623343101060152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4269441505924132784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a262e4158183b0641847c9889a021016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterBullet
+  rb: {fileID: 0}
+  MOVE_SPEED: 0
+  TIME_OUT: 5
+  DAMAGE: 5

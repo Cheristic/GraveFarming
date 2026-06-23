@@ -7,7 +7,7 @@ public class Grave : MonoBehaviour, IHittable
     //public Vector2Int GridSpot;
     [SerializeField] int numGravePieces;
     [SerializeField] float initialHealth;
-    float health;
+    internal float health;
     System.Random rand;
 
     public virtual void Init() {

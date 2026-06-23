@@ -1,11 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor.Build.Pipeline;
 
 
 public class GraveObjectPooler : MonoBehaviour
 {
-    List<List<GameObject>> GravePools;
+    List<List<Grave>> GravePools;
     [SerializeField] int PrespawnGraveAmount;
+
+    internal List<Grave> ShooterGravePool { get => GravePools[0]; }
 
     private void Start()
     {
@@ -13,14 +16,14 @@ public class GraveObjectPooler : MonoBehaviour
 
         for (int i = 0; i < GraveDatabase.Instance.GraveList.Count; i++)
         {
-            List<GameObject> GravePool = new();
+            List<Grave> GravePool = new();
 
             for (int j = 0; j < PrespawnGraveAmount; j++)
             {
                 Grave grave = Instantiate(GraveDatabase.Instance.GraveList[i].gravePrefab, this.transform).GetComponent<Grave>();
                 grave.gameObject.SetActive(false);
                 grave.Init();
-                GravePool.Add(grave.gameObject);
+                GravePool.Add(grave);
             }
 
             GravePools.Add(GravePool);
@@ -29,7 +32,7 @@ public class GraveObjectPooler : MonoBehaviour
 
     public Grave GetGrave(GraveDatabase.GraveType type)
     {
-        List<GameObject> pool = GravePools[(int)type];
+        List<Grave> pool = GravePools[(int)type];
 
         for (int i = 0; i < pool.Count; i++)
         {
@@ -42,7 +45,7 @@ public class GraveObjectPooler : MonoBehaviour
         Grave grave = Instantiate(GraveDatabase.Instance.GraveList[(int)type].gravePrefab, this.transform).GetComponent<Grave>();
         grave.gameObject.SetActive(false);
         grave.Init();
-        pool.Add(grave.gameObject);
+        pool.Add(grave);
         return grave;
     }
 }

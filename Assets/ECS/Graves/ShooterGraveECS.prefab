@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7701275922117136128}
   - component: {fileID: 7764368375855020640}
   m_Layer: 6
-  m_Name: ShooterGrave
+  m_Name: ShooterGraveECS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShooterGrave
   numGravePieces: 2
   initialHealth: 10
-  _SHOOTER_BULLET: {fileID: 4965549454116181467, guid: 1d5c60b6166193e4ea503a46b22f3bea, type: 3}
+  _SHOOTER_BULLET: {fileID: -3237623343101060152, guid: b95bf3a321d50d248aae34a8de69ca8d, type: 3}
   PLAYER_CHECK_FOR_ENEMY_RADIUS: 6
   SHOOTING_RADIUS: 5
   BULLETS_TO_SHOOT: 3

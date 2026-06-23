@@ -9,14 +9,13 @@ public class ShooterBullet : MonoBehaviour
     [SerializeField] float DAMAGE = 5f;
 
     GameObject _firingSource;
-    public void Shoot(GameObject source, Vector3 sourcePos, Vector3 target)
+    public void Shoot(GameObject source)
     {
         _firingSource = source;
-        gameObject.SetActive(true);
-        transform.position = sourcePos;
-        Vector2 dir = target - transform.position;
-        transform.localRotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
-        rb.linearVelocity = dir * MOVE_SPEED;
+        //transform.position = sourcePos;
+        //Vector2 dir = target - transform.position;
+        //transform.localRotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
+        //rb.linearVelocity = dir * MOVE_SPEED;
         StartCoroutine(TimeOut());
     }
 
