@@ -13,6 +13,11 @@ public struct MoveSpeed : IComponentData
     public float Value;
 }
 
+public struct AttackRange : IComponentData
+{
+    public float Value;
+}
+
 public struct GraveComponent : IComponentData
 {
     public int numGravePieces;
