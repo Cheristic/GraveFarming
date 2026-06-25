@@ -19,10 +19,10 @@ public partial struct EnemyDeathCheckSystem : ISystem
             foreach (var (health, entity) in SystemAPI.Query<RefRO<Health>>().WithAll<EnemyTag>().WithEntityAccess())
             {
 
-                //if (health.ValueRO.Value <= 0f)
-                //{
-                //    commandBuffer.DestroyEntity(entity);
-                //}
+                if (health.ValueRO.Value <= 0f)
+                {
+                    commandBuffer.DestroyEntity(entity);
+                }
             }
 
             commandBuffer.Playback(state.EntityManager);

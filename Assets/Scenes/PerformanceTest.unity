@@ -145325,7 +145325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5295149693822480003, guid: ae26644a23907594e81e74f48132b18c, type: 3}
       propertyPath: spawnDelay
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5295149693822480003, guid: ae26644a23907594e81e74f48132b18c, type: 3}
       propertyPath: spawnAmount

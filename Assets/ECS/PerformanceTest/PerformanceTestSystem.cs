@@ -3,13 +3,15 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [BurstCompile]
-public partial class PerformranceTestSystem : SystemBase
+public partial class PerformanceTestSystem : SystemBase
 {
     protected override void OnCreate()
     {
         RequireForUpdate<GraveDatabaseComponent>();
+        if (SceneManager.GetActiveScene().name != "PerformanceTest") this.Enabled = false;
     }
 
     protected override void OnUpdate()
