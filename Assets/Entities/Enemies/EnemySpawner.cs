@@ -17,34 +17,35 @@ public class EnemySpawner : MonoBehaviour
         }
 #endif
     }
-    
-    IEnumerator DelayedSpawns(List<Enemy> enemies)
+
+    internal int spawnNewEnemy;
+    IEnumerator DelayedSpawns(int toSpawn)
     {
         if (GridManager.Instance.HasGraveAt(transform.position))
         {
             GridManager.Instance.RemoveGrave(transform.position);
         }
 
-        foreach (var enemy in enemies)
+        for (int i = 0; i < toSpawn; i++)
         {
-            enemy.Spawn(new Vector2(transform.position.x, transform.position.y));
+            spawnNewEnemy++;
+            //enemy.Spawn(new Vector2(transform.position.x, transform.position.y));
             yield return new WaitForSeconds(spawnDelay);
         }
     }
 
-    public List<Enemy> SpawnEnemies()
+    public void SpawnEnemies()
     {
-        List<Enemy> enemies = new();
+        int toSpawn = 0;
         for (int i = 0; i < spawnAmount; i++)
         {
             System.Random random = new(RoundManager.Instance.roundNum * spawnAmount + i);
             int type = random.Next(2);
-            Enemy enemy = PoolManager.Instance.enemyPooler.GetEnemy((EnemyDataBase.EnemyType)type);
-            enemy.isAlive = true;
-            enemy.hasSpawned = false;
-            enemies.Add(enemy);
+            //Enemy enemy = PoolManager.Instance.enemyPooler.GetEnemy((EnemyDataBase.EnemyType)type);
+            //enemy.isAlive = true;
+            //enemy.hasSpawned = false;
+            toSpawn++;
         }
-        StartCoroutine(DelayedSpawns(enemies));
-        return enemies;
+        StartCoroutine(DelayedSpawns(toSpawn));
     }
 }

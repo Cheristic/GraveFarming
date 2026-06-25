@@ -57,15 +57,15 @@ public class UpdateMinimap : MonoBehaviour
 
     private void DestroyGrave(Vector2Int gridPos)
     {
-        Vector2 pos = GridToMinimapPos(gridPos);
-        foreach (GameObject grave in pooler.ObjectPool)
-        {
-            if (grave.transform.localPosition == new Vector3(pos.x, pos.y, grave.transform.position.z))
-            {
-                grave.GetComponent<MinimapObject>().Break();
-                return;
-            }
-        }
+        //Vector2 pos = GridToMinimapPos(gridPos);
+        //foreach (GameObject grave in pooler.ObjectPool)
+        //{
+        //    if (grave.transform.localPosition == new Vector3(pos.x, pos.y, grave.transform.position.z))
+        //    {
+        //        grave.GetComponent<MinimapObject>().Break();
+        //        return;
+        //    }
+        //}
     }
 
     float cellSize { get => 1.0f / GridManager.Instance.WorldtoGridRatio; }

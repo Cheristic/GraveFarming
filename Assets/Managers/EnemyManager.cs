@@ -59,34 +59,33 @@ public class EnemyManager : MonoBehaviour
     }
     private void SpawnEnemies()
     {
-        List<Enemy> spawned = new();
         foreach (EnemySpawner spawner in spawnerList)
         {
-            spawned.AddRange(spawner.SpawnEnemies());
+            spawner.SpawnEnemies();
         }
 
-        StartCoroutine(CheckEnemyStatus());
+        //StartCoroutine(CheckEnemyStatus());
 
-        IEnumerator CheckEnemyStatus()
-        {
-            bool enemiesAlive = true;
-            while (RoundManager.Instance.roundActive && enemiesAlive)
-            {
-                yield return null;
-                enemiesAlive = false;
-                foreach (var enemy in spawned)
-                {
-                    if (!enemy.hasSpawned || enemy.isAlive) {
-                        enemiesAlive = true;
-                        break;
-                    }
-                }
-            }
+        //IEnumerator CheckEnemyStatus()
+        //{
+        //    bool enemiesAlive = true;
+        //    while (RoundManager.Instance.roundActive && enemiesAlive)
+        //    {
+        //        yield return null;
+        //        enemiesAlive = false;
+        //        foreach (var enemy in spawned)
+        //        {
+        //            if (!enemy.hasSpawned || enemy.isAlive) {
+        //                enemiesAlive = true;
+        //                break;
+        //            }
+        //        }
+        //    }
 
-            if (RoundManager.Instance.roundActive)
-            {
-                RoundManager.Instance.BeginNextRound();
-            }
-        }
+        //    if (RoundManager.Instance.roundActive)
+        //    {
+        //        RoundManager.Instance.BeginNextRound();
+        //    }
+        //}
     }
 }
