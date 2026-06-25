@@ -33,7 +33,7 @@ public partial struct ShooterGraveTargetCheckSystem : ISystem
         ShooterGraveTargetCheckJob jobTarget = new ShooterGraveTargetCheckJob
         {
             enemyTrans = enemyQuery.ToComponentDataArray<LocalTransform>(Allocator.TempJob),
-            playerPos = PlayerManager.Instance.transform.position,
+            playerPos = new float3(PlayerManager.Instance.transform.position.x, PlayerManager.Instance.transform.position.y, 0),
             deltaTime = SystemAPI.Time.DeltaTime
         };
 
@@ -54,17 +54,20 @@ public partial struct ShooterGraveTargetCheckSystem : ISystem
                 if (grave.timer > 0)
                 {
                     grave.timer -= deltaTime;
+                    return;
                 } else
                 {
                     if (grave.bulletsShot == grave.BULLETS_TO_SHOOT)
                     {
                         grave.TIMER_isShooting = false;
+                        grave.bulletsShot = 0;
                     } else
                     {
                         grave.bulletsShot++;
                         grave.timer = grave.bulletsShot == grave.BULLETS_TO_SHOOT ? grave.REST_TIME_AFTER_BULLETS :
                             grave.TIME_BETWEEN_BULLETS;
                         grave.triggerShoot = true;
+                        return;
                     }
                 }
             } else if (grave.TIMER_foundNoTarget)
@@ -83,25 +86,39 @@ public partial struct ShooterGraveTargetCheckSystem : ISystem
             
 
             bool foundTarget = false;
-            float bestGraveToEnemyDist = math.INFINITY;
-            float bestPlayerToEnemyDist = math.INFINITY;
+            float bestPlayerToEnemyDist = grave.PLAYER_CHECK_FOR_ENEMY_RADIUS;
             for (int i = 0; i < enemyTrans.Length; i++)
             {
-                float graveToEnemyDist = CheckDistance(localTransform.Position, enemyTrans[i].Position, grave.SHOOTING_RADIUS);
-                float playerToEnemyDist = CheckDistance(playerPos, enemyTrans[i].Position, grave.PLAYER_CHECK_FOR_ENEMY_RADIUS);
+                float graveToEnemyDist = CheckDistance(localTransform.Position, enemyTrans[i].Position);
+                float playerToEnemyDist = CheckDistance(playerPos, enemyTrans[i].Position);
 
-                grave.enemies = graveToEnemyDist;
-                grave.playerdist = playerToEnemyDist;
-                
-                if (graveToEnemyDist >= 0 && playerToEnemyDist >= 0 &&
-                    graveToEnemyDist < bestGraveToEnemyDist && playerToEnemyDist < bestPlayerToEnemyDist)
+
+                if (graveToEnemyDist < grave.SHOOTING_RADIUS && playerToEnemyDist < bestPlayerToEnemyDist)
                 {
-                    bestGraveToEnemyDist = graveToEnemyDist;
+                    grave.enemies = graveToEnemyDist;
+                    grave.playerdist = playerToEnemyDist;
                     bestPlayerToEnemyDist = playerToEnemyDist;
                     grave.targetPos = enemyTrans[i].Position;
                     foundTarget = true;
                 }
             }
+            if (!foundTarget)
+            {
+                float bestGraveToEnemyDist = grave.SHOOTING_RADIUS;
+                for (int i = 0; i < enemyTrans.Length; i++)
+                {
+                    float graveToEnemyDist = CheckDistance(localTransform.Position, enemyTrans[i].Position);
+
+                    if (graveToEnemyDist < bestGraveToEnemyDist)
+                    {
+                        grave.enemies = graveToEnemyDist;
+                        bestGraveToEnemyDist = graveToEnemyDist;
+                        grave.targetPos = enemyTrans[i].Position;
+                        foundTarget = true;
+                    }
+                }
+            }
+
             if (foundTarget)
             {
                 grave.TIMER_isShooting = true;
@@ -113,11 +130,11 @@ public partial struct ShooterGraveTargetCheckSystem : ISystem
             }
         }
 
-        float CheckDistance(float3 a, float3 b, float radius)
+        float CheckDistance(float3 a, float3 b)
         {
             float3 delta = a - b;
             float dist = math.sqrt(delta.x * delta.x + delta.y + delta.y);
-            return dist <= radius ? dist : -1;
+            return dist;
         }
     }
 }

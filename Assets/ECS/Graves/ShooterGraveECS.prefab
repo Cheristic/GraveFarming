@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShooterGraveAuthoring
   PLAYER_CHECK_FOR_ENEMY_RADIUS: 6
-  SHOOTING_RADIUS: 5
+  SHOOTING_RADIUS: 11
   BULLETS_TO_SHOOT: 3
   CHECK_FOR_ENEMY_INTERVAL: 0.5
   TIME_BETWEEN_BULLETS: 0.56

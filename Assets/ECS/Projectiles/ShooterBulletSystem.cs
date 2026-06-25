@@ -15,12 +15,6 @@ public partial struct ShooterBulletSystem : ISystem
 
     public void OnUpdate(ref SystemState state)
     {
-        //foreach ((RefRO<ProjectileComponent> proj, RefRW<LocalTransform> localTransform)
-        //    in SystemAPI.Query<RefRO<ProjectileComponent>, RefRW<LocalTransform>>())
-        //{
-        //    localTransform.ValueRW = localTransform.ValueRO.Translate(proj.ValueRO.MOVE_SPEED
-        //        * SystemAPI.Time.DeltaTime * new float3(1f, 1f, 0f));
-        //}
 
         ShooterBulletMoveJob moveJob = new ShooterBulletMoveJob
         {
@@ -32,10 +26,14 @@ public partial struct ShooterBulletSystem : ISystem
     public partial struct ShooterBulletMoveJob : IJobEntity
     {
         public float deltaTime;
-        public void Execute(in ProjectileComponent proj, ref LocalTransform localTransform)
+        public void Execute(ref ProjectileComponent proj, ref LocalTransform localTransform)
         {
             localTransform = localTransform.Translate(proj.MOVE_SPEED
                 * deltaTime * proj.dir);
+
+            proj.TIME_OUT -= deltaTime;
+
+
         }
     }
 }

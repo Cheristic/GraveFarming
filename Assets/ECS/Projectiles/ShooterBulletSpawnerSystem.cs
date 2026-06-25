@@ -56,7 +56,8 @@ public partial class ShooterBulletSpawnerSystem : SystemBase
         });
 
         RefRW<ProjectileComponent> proj = SystemAPI.GetComponentRW<ProjectileComponent>(spawnedBullet);
-        proj.ValueRW.dir = new float3(dir.x, dir.y, 0);
+        float mag = math.sqrt(dir.x * dir.x + dir.y * dir.y);
+        proj.ValueRW.dir = new float3(dir.x/mag, dir.y/mag, 0);
     }
 
     

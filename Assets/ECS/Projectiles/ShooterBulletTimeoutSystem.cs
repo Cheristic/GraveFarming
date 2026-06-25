@@ -4,11 +4,11 @@ using Unity.Collections;
 using Unity.Entities;
 
 [BurstCompile]
-public partial struct EnemyDeathCheckSystem : ISystem
+public partial struct ShooterBulletTimeoutSystem : ISystem
 {
     public void OnCreate(ref SystemState state)
     {
-        state.RequireForUpdate<EnemyTag>();
+        state.RequireForUpdate<ProjectileComponent>();
     }
 
     public void OnUpdate(ref SystemState state)
@@ -16,13 +16,13 @@ public partial struct EnemyDeathCheckSystem : ISystem
         using (var commandBuffer = new EntityCommandBuffer(Allocator.TempJob))
         {
 
-            foreach (var (health, entity) in SystemAPI.Query<RefRO<Health>>().WithAll<EnemyTag>().WithEntityAccess())
+            foreach (var (proj, entity) in SystemAPI.Query<RefRO<ProjectileComponent>>().WithEntityAccess())
             {
 
-                //if (health.ValueRO.Value <= 0f)
-                //{
-                //    commandBuffer.DestroyEntity(entity);
-                //}
+                if (proj.ValueRO.TIME_OUT <= 0f)
+                {
+                    commandBuffer.DestroyEntity(entity);
+                }
             }
 
             commandBuffer.Playback(state.EntityManager);

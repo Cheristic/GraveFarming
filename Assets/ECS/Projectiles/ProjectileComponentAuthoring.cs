@@ -26,7 +26,6 @@ public class ProjectileComponentAuthoring : MonoBehaviour
 
 public struct ProjectileComponent : IComponentData
 {
-    //public float3 Dir;
     public float MOVE_SPEED;
     public float TIME_OUT;
     public float DAMAGE;
