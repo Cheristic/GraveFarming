@@ -6,7 +6,12 @@ public struct Health : IComponentData
     public float Value;
 }
 
-public struct EnemyTag : IComponentData { }
+public struct EnemyTag : IComponentData {}
+
+public struct MoveSpeed : IComponentData
+{
+    public float Value;
+}
 
 public struct GraveComponent : IComponentData
 {
