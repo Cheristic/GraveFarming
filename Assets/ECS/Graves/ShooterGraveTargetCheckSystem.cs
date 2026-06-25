@@ -1,4 +1,5 @@
 
+using System.Diagnostics;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
@@ -48,19 +49,7 @@ public partial struct ShooterGraveTargetCheckSystem : ISystem
         public float deltaTime;
         public void Execute(ref ShooterGraveComponent grave, in LocalTransform localTransform)
         {
-            if (grave.TIMER_foundNoTarget)
-            {
-                if (grave.timer < 0)
-                {
-                    grave.TIMER_foundNoTarget = false;
-                    grave.timer = 0;
-                } else
-                {
-                    grave.timer -= deltaTime;
-                    return;
-                }
-            }
-            else if (grave.TIMER_isShooting)
+            if (grave.TIMER_isShooting)
             {
                 if (grave.timer > 0)
                 {
@@ -78,7 +67,20 @@ public partial struct ShooterGraveTargetCheckSystem : ISystem
                         grave.triggerShoot = true;
                     }
                 }
+            } else if (grave.TIMER_foundNoTarget)
+            {
+                if (grave.timer < 0)
+                {
+                    grave.TIMER_foundNoTarget = false;
+                    grave.timer = 0;
+                }
+                else
+                {
+                    grave.timer -= deltaTime;
+                    return;
+                }
             }
+            
 
             bool foundTarget = false;
             float bestGraveToEnemyDist = math.INFINITY;
@@ -87,7 +89,9 @@ public partial struct ShooterGraveTargetCheckSystem : ISystem
             {
                 float graveToEnemyDist = CheckDistance(localTransform.Position, enemyTrans[i].Position, grave.SHOOTING_RADIUS);
                 float playerToEnemyDist = CheckDistance(playerPos, enemyTrans[i].Position, grave.PLAYER_CHECK_FOR_ENEMY_RADIUS);
-                
+
+                grave.enemies = graveToEnemyDist;
+                grave.playerdist = playerToEnemyDist;
                 
                 if (graveToEnemyDist >= 0 && playerToEnemyDist >= 0 &&
                     graveToEnemyDist < bestGraveToEnemyDist && playerToEnemyDist < bestPlayerToEnemyDist)
@@ -98,7 +102,6 @@ public partial struct ShooterGraveTargetCheckSystem : ISystem
                     foundTarget = true;
                 }
             }
-
             if (foundTarget)
             {
                 grave.TIMER_isShooting = true;
@@ -113,7 +116,7 @@ public partial struct ShooterGraveTargetCheckSystem : ISystem
         float CheckDistance(float3 a, float3 b, float radius)
         {
             float3 delta = a - b;
-            float dist = delta.x * delta.x + delta.y + delta.y;
+            float dist = math.sqrt(delta.x * delta.x + delta.y + delta.y);
             return dist <= radius ? dist : -1;
         }
     }

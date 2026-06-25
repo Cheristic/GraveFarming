@@ -51,8 +51,8 @@ public class UpdateMinimap : MonoBehaviour
 
     private void PlaceGrave(Vector2Int gridPos)
     {
-        MinimapGrave grave = pooler.GetMinimapGrave();
-        grave.Spawn(GridToMinimapPos(gridPos));
+        //MinimapGrave grave = pooler.GetMinimapGrave();
+        //grave.Spawn(GridToMinimapPos(gridPos));
     }
 
     private void DestroyGrave(Vector2Int gridPos)

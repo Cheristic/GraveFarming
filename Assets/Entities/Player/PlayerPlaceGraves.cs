@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerPlaceGraves : MonoBehaviour
 {
+    public static PlayerPlaceGraves Instance { get; private set; }
     [SerializeField] SpriteRenderer GravePreviewLocation;
     int soulIndex = (int)GraveDatabase.Resources.SoulPieces;
     int graveIndex = (int)GraveDatabase.Resources.GravePieces;
@@ -13,6 +14,7 @@ public class PlayerPlaceGraves : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Instance = this;
         LastSelectedType = GraveDatabase.Instance.GraveList[0];
         PlayerManager.Instance.Input.Player.PlaceGrave.started += AttemptPlaceGrave;
         PlayerManager.Instance.Input.Player.SelectGrave.started += SelectGraveType;
@@ -85,16 +87,19 @@ public class PlayerPlaceGraves : MonoBehaviour
 
         return false;
         
-    } 
+    }
 
+    internal Vector2 graveSpawnLocation;
+    internal bool spawnNewGrave;
     void AttemptPlaceGrave(InputAction.CallbackContext ctx)
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (isValidPosition(mousePos) && HasEnoughResources())
         {
-            Vector2 graveLocation = GridManager.Instance.PlaceGrave(mousePos);
-            Grave grave = PoolManager.Instance.gravePooler.GetGrave(LastSelectedType.type);
-            grave.Spawn(graveLocation);
+            graveSpawnLocation = GridManager.Instance.PlaceGrave(mousePos);
+            //Grave grave = PoolManager.Instance.gravePooler.GetGrave(LastSelectedType.type);
+            spawnNewGrave = true;
+            //grave.Spawn(graveLocation);
             ChargePlayer();
 
             GravePreviewLocation.sprite = null;

@@ -144495,10 +144495,8 @@ GameObject:
   m_Component:
   - component: {fileID: 291665212}
   - component: {fileID: 291665217}
-  - component: {fileID: 291665216}
   - component: {fileID: 291665215}
   - component: {fileID: 291665214}
-  - component: {fileID: 291665213}
   m_Layer: 0
   m_Name: Poolers
   m_TagString: Untagged
@@ -144521,19 +144519,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1797142274}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &291665213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 291665211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 074e7af5fc71e73439a624c94abf2e88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyPooler
-  PrespawnEnemyAmount: 5
 --- !u!114 &291665214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144562,19 +144547,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GravePiecePooler
   PrespawnGravePieceAmount: 4
   piecePrefab: {fileID: 4061568259649892808, guid: 228685f8e3d3569489b2e7d0cbc0acff, type: 3}
---- !u!114 &291665216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 291665211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fe9a45752e27d0439a0e94c3cba88a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GraveObjectPooler
-  PrespawnGraveAmount: 10
 --- !u!114 &291665217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144587,10 +144559,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e45bc262a530349ad988dc850d8976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PoolManager
-  gravePooler: {fileID: 291665216}
+  gravePooler: {fileID: 0}
   gravePiecePooler: {fileID: 291665215}
   soulPiecePooler: {fileID: 291665214}
-  enemyPooler: {fileID: 291665213}
+  enemyPooler: {fileID: 0}
 --- !u!1 &327075657 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8220346961420746679, guid: 2995792bb57668f4bbbcd6b673df73dc, type: 3}

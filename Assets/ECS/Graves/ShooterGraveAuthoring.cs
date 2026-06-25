@@ -11,6 +11,10 @@ public class ShooterGraveAuthoring : MonoBehaviour
     public float TIME_BETWEEN_BULLETS = .2f;
     public float REST_TIME_AFTER_BULLETS = 1f;
 
+    public int GRAVE_PIECES_TO_DROP;
+    public int HEALTH;
+
+
     public class Baker : Baker<ShooterGraveAuthoring>
     {
         public override void Bake(ShooterGraveAuthoring authoring)
@@ -24,6 +28,14 @@ public class ShooterGraveAuthoring : MonoBehaviour
                 CHECK_FOR_ENEMY_INTERVAL = authoring.CHECK_FOR_ENEMY_INTERVAL,
                 TIME_BETWEEN_BULLETS = authoring.TIME_BETWEEN_BULLETS,
                 REST_TIME_AFTER_BULLETS = authoring.REST_TIME_AFTER_BULLETS
+            });
+            AddComponent(entity, new GraveComponent
+            {
+                numGravePieces = authoring.GRAVE_PIECES_TO_DROP
+            });
+            AddComponent(entity, new Health
+            {
+                Value = authoring.HEALTH
             });
         }
     }
@@ -43,6 +55,9 @@ public struct ShooterGraveComponent : IComponentData
     public bool TIMER_foundNoTarget;
     public int bulletsShot;
     public bool TIMER_isShooting;
+
+    public float enemies;
+    public float playerdist;
 
     public bool triggerShoot;
     public float3 targetPos;

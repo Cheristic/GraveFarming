@@ -1,4 +1,5 @@
 using Unity.Entities;
+using UnityEngine;
 
 public struct Health : IComponentData
 {
@@ -6,3 +7,8 @@ public struct Health : IComponentData
 }
 
 public struct EnemyTag : IComponentData { }
+
+public struct GraveComponent : IComponentData
+{
+    public int numGravePieces;
+}
