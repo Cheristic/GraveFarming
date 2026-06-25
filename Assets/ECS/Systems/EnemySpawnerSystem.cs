@@ -15,7 +15,7 @@ public partial class EnemySpawnerSystem : SystemBase
     {
         foreach (var spawner in EnemyManager.Main.spawnerList)
         {
-            if (spawner.spawnNewEnemy > 0)
+            while (spawner.spawnNewEnemy > 0)
             {
                 EnemyDatabaseComponent database = SystemAPI.GetSingleton<EnemyDatabaseComponent>();
 

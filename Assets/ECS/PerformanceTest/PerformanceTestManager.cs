@@ -16,7 +16,7 @@ public class PerformanceTestManager : MonoBehaviour
     private void Start()
     {
         PlayerManager.Instance.transform.position = GridManager.Instance.ToWorldSpace(new Vector2Int(GridManager.Instance.GridDimensions.x / 2, GridManager.Instance.GridDimensions.y / 2));
-        PlaceStartingGraves();
+        //PlaceStartingGraves();
         foreach (var obj in DisableTheseObjects) obj.SetActive(false);
     }
 

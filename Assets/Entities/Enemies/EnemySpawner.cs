@@ -26,6 +26,7 @@ public class EnemySpawner : MonoBehaviour
             GridManager.Instance.RemoveGrave(transform.position);
         }
 
+
         for (int i = 0; i < toSpawn; i++)
         {
             spawnNewEnemy++;
@@ -46,6 +47,7 @@ public class EnemySpawner : MonoBehaviour
             //enemy.hasSpawned = false;
             toSpawn++;
         }
-        StartCoroutine(DelayedSpawns(toSpawn));
+        spawnNewEnemy = toSpawn;
+        //StartCoroutine(DelayedSpawns(toSpawn));
     }
 }
