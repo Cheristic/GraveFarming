@@ -34,6 +34,10 @@ public partial class PerformanceTestSystem : SystemBase
                     Scale = 0.5f,
                     Rotation = quaternion.identity
                 });
+
+                RefRW<ShooterGraveComponent> grave = SystemAPI.GetComponentRW<ShooterGraveComponent>(spawnedGrave);
+                grave.ValueRW.SHOOTING_RADIUS = float.MaxValue;
+
             }
     }
 }

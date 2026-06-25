@@ -1,5 +1,6 @@
 using NUnit.Framework.Internal;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,10 +8,12 @@ public class PerformanceTestManager : MonoBehaviour
 {
     public static PerformanceTestManager Instance;
     [SerializeField] GameObject[] DisableTheseObjects;
+
     private void Awake()
     {
         Instance = this;
         UnityEngine.Random.InitState(0);
+        RoundManager.TriggerActivePhase += () => TrackData();
     }
 
     private void Start()
@@ -20,16 +23,17 @@ public class PerformanceTestManager : MonoBehaviour
         foreach (var obj in DisableTheseObjects) obj.SetActive(false);
     }
 
-    void PlaceStartingGraves()
+    IEnumerator TrackData()
     {
-        for (int x = 0; x < GridManager.Instance.GridDimensions.x; x++)
-            for (int y = 0; y < GridManager.Instance.GridDimensions.y; y++)
-            {
-                if (x == GridManager.Instance.GridDimensions.x / 2 && y == GridManager.Instance.GridDimensions.y / 2) continue;
+        int frame = 0;
+        float time = 0;
+        while (frame < 150)
+        {
+            yield return null;
+            frame++;
+            time += Time.deltaTime;
+        }
 
-                Vector2 graveLocation = GridManager.Instance.PlaceGrave(GridManager.Instance.ToWorldSpace(new Vector2Int(x, y)));
-                Grave grave = PoolManager.Instance.gravePooler.GetGrave(GraveDatabase.Instance.GraveList[0].type);
-                grave.Spawn(graveLocation);
-            }
+        Debug.Log(time / frame);
     }
 }
