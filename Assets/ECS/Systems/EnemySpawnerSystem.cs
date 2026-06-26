@@ -2,6 +2,7 @@ using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine.SceneManagement;
 
 [BurstCompile]
 public partial class EnemySpawnerSystem : SystemBase
@@ -27,6 +28,14 @@ public partial class EnemySpawnerSystem : SystemBase
                     Scale = 1.0f,
                     Rotation = quaternion.identity
                 });
+
+                if (SceneManager.GetActiveScene().name == "PerformanceTest")
+                {
+                    RefRW<Health> health = SystemAPI.GetComponentRW<Health>(spawnedEnemy);
+                    health.ValueRW.Value = float.MaxValue;
+                }
+
+
 
                 spawner.spawnNewEnemy--;
             }
