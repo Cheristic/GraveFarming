@@ -86,7 +86,7 @@ public class RoundManager : MonoBehaviour
         StopAllCoroutines(); // stops the above coroutine if active
         skipRestButton.SetActive(false);
         roundActive = true;
-        TriggerActivePhase.Invoke();
+        TriggerActivePhase?.Invoke();
 
         StartCoroutine(Timer());
     }

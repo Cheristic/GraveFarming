@@ -1,8 +1,7 @@
 using NUnit.Framework.Internal;
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
-
+using System.Collections;
 public class PerformanceTestManager : MonoBehaviour
 {
     public static PerformanceTestManager Instance;
@@ -11,6 +10,7 @@ public class PerformanceTestManager : MonoBehaviour
     {
         Instance = this;
         UnityEngine.Random.InitState(0);
+        RoundManager.TriggerActivePhase += () => StartCoroutine(TrackData());
     }
 
     private void Start()
@@ -31,5 +31,20 @@ public class PerformanceTestManager : MonoBehaviour
                 Grave grave = PoolManager.Instance.gravePooler.GetGrave(GraveDatabase.Instance.GraveList[0].type);
                 grave.Spawn(graveLocation);
             }
+    }
+
+    IEnumerator TrackData()
+    {
+        int frame = 0;
+        float time = 0;
+        while (frame < 150)
+        {
+            yield return null;
+            frame++;
+            time += Time.deltaTime;
+            Debug.Log(frame);
+        }
+
+        Debug.Log(time / frame);
     }
 }

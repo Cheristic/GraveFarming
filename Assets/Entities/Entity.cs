@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Entity : MonoBehaviour, IHittable
 {
@@ -10,7 +11,8 @@ public class Entity : MonoBehaviour, IHittable
 
     public void Awake()
     {
-        _currentHealth = MAX_HEALTH;
+        if (SceneManager.GetActiveScene().name == "PerformanceTest") _currentHealth = float.MaxValue;
+        else _currentHealth = MAX_HEALTH;
         _rb = GetComponent<Rigidbody2D>();
     }
 
