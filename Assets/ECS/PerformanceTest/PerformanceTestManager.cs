@@ -13,7 +13,7 @@ public class PerformanceTestManager : MonoBehaviour
     {
         Instance = this;
         UnityEngine.Random.InitState(0);
-        RoundManager.TriggerActivePhase += () => TrackData();
+        RoundManager.TriggerActivePhase += () => StartCoroutine(TrackData());
     }
 
     private void Start()
@@ -32,6 +32,7 @@ public class PerformanceTestManager : MonoBehaviour
             yield return null;
             frame++;
             time += Time.deltaTime;
+            Debug.Log(frame);
         }
 
         Debug.Log(time / frame);
