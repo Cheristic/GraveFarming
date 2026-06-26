@@ -5,7 +5,7 @@ public class EnemyAuthoring : MonoBehaviour
 {
     public float health = 10f ;
     public float movespeed = 3f;
-    public float attackrange = 1f;
+    public float attackrange = 0.5f;
     // This class, Baker, is embedded in the EnemyAuthoring class directly (though
     // it doesn't have to be, this is just nice and clean). It manages the baking
     // process that converts this GameObject to an Entity
